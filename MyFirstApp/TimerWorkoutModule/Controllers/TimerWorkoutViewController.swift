@@ -38,12 +38,24 @@ class TimerWorkoutViewController: UIViewController {
     private lazy var finishButton = GreenButton(text: "FINISH")
     
     private var workoutModel = WorkoutModel()
+    private var customAlert = CustomAlert()
+    private let shepeLayer = CAShapeLayer()
+    private var timer = Timer()
+    
+    private var durationTimer = 10
+    private var numberOfSet = 0
+    
+    override func viewDidLayoutSubviews() {
+        animationCircular()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupViews()
         setConstrains()
+        addTapped()
+        setWorkoutParameters()
     }
     
     private func setupViews() {
@@ -55,24 +67,142 @@ class TimerWorkoutViewController: UIViewController {
         view.addSubview(ellipseImageView)
         view.addSubview(timerLabel)
         view.addSubview(ditailsLabel)
+        timerWorkoutParametersView.refreshLabels(model: workoutModel, numberOfSet: numberOfSet)
         view.addSubview(timerWorkoutParametersView)
+        timerWorkoutParametersView.cellNextSetTimerDelegate = self
         view.addSubview(finishButton)
         finishButton.addTarget(self, action: #selector(finishButtonTapped), for: .touchUpInside)
         
     }
     
     @objc private func closeButtonTapped() {
+        timer.invalidate()
         dismiss(animated: true, completion: nil)
     }
     
     @objc private func finishButtonTapped() {
-       print("finish")
+        if numberOfSet == workoutModel.workoutSets {
+            dismiss(animated: true)
+            RealmManager.shared.updateStatusWorkoutModule(model: workoutModel)
+        } else {
+            presentAlertWithAction(title: "Warning", message: "You haven't finished your workout") {
+                self.dismiss(animated: true)
+            }
+        }
     }
     
     public func setWorkoutModel(_ model: WorkoutModel) {
         workoutModel = model
     }
+    
+    // нажатие на лейбл таймер
+    private func addTapped() {
+        let tapLabel = UITapGestureRecognizer(target: self, action: #selector(startTimer))
+        timerLabel.isUserInteractionEnabled = true
+        timerLabel.addGestureRecognizer(tapLabel)
+    }
+    
+    // нажимаем на таймер и кнопки не доступны
+    @objc private func startTimer() {
+        timerWorkoutParametersView.buttonIsEnable(false)
+        
+        if numberOfSet == workoutModel.workoutSets {
+            presentSimpleAlert(title: "Error", message: "Finish your workout!")
+        } else {
+            basicAnimation()
+            timer = Timer.scheduledTimer(timeInterval: 1,
+                          target: self,
+                          selector: #selector(timerAction),
+                          userInfo: nil,
+                          repeats: true)
+        }
+    }
+    
+    @objc private func timerAction() {
+        durationTimer -= 1
+        
+        if durationTimer == 0 {
+            timer.invalidate()
+            durationTimer = workoutModel.workoutTimer
+
+            numberOfSet += 1
+            timerWorkoutParametersView.refreshLabels(model: workoutModel, numberOfSet: numberOfSet)
+            timerWorkoutParametersView.buttonIsEnable(true)
+        }
+        
+        let (min, sec) = durationTimer.convertSeconds()
+        timerLabel.text = "\(min):\(sec.setZeroForSecond())"
+    }
+    
+   
+    // сколько выставляем времени столько и на таймере
+    private func setWorkoutParameters() {
+        let (min, sec) = workoutModel.workoutTimer.convertSeconds()
+        timerLabel.text = "\(min):\(sec.setZeroForSecond())"
+        durationTimer = workoutModel.workoutTimer
+    }
 }
+
+extension TimerWorkoutViewController: NextSetTimerProtocol {
+    func nextSetTimerTapped() {
+        if numberOfSet < workoutModel.workoutSets {
+            numberOfSet += 1
+            timerWorkoutParametersView.refreshLabels(model: workoutModel, numberOfSet: numberOfSet)
+        } else {
+            presentSimpleAlert(title: "Error", message: "Finish your workout!")
+        }
+    }
+    
+    func editingTapped() {
+        customAlert.presentCustomAlert(viewController: self, repsOrTimer: "Timer of set") { [weak self] sets, timerOfSet in
+            guard let self = self else { return }
+            if sets != "" && timerOfSet != "" {
+                guard let numberOfSets = Int(sets),
+                      let numberOfTimer = Int(timerOfSet) else { return }
+                RealmManager.shared.updateSetsTimerWorkoutModule(model: self.workoutModel,
+                                                                 sets: numberOfSets,
+                                                                 timer: numberOfTimer)
+                let (min, sec) = numberOfTimer.convertSeconds()
+                self.timerLabel.text = "\(min):\(sec.setZeroForSecond())"
+                self.durationTimer = numberOfTimer
+                self.timerWorkoutParametersView.refreshLabels(model: self.workoutModel, numberOfSet: self.numberOfSet)
+            }
+        }
+    }  
+}
+
+// зеленый индикатор времени
+extension TimerWorkoutViewController {
+    
+    private func animationCircular() {
+       
+        let center = CGPoint(x: ellipseImageView.frame.width / 2,
+                             y: ellipseImageView.frame.height / 2)
+        
+        let endAngle = (-CGFloat.pi / 2)
+        let startAngle = 2 * CGFloat.pi + endAngle
+        
+        let circularPath = UIBezierPath(arcCenter: center, radius: 127, startAngle: startAngle, endAngle: endAngle, clockwise: false)
+        
+        shepeLayer.path = circularPath.cgPath
+        shepeLayer.lineWidth = 21
+        shepeLayer.fillColor = UIColor.clear.cgColor
+        shepeLayer.strokeColor = UIColor.specialGreen.cgColor
+        shepeLayer.strokeEnd = 1
+        shepeLayer.lineCap = .round
+        ellipseImageView.layer.addSublayer(shepeLayer)
+    }
+
+    //настройка анимации индикатора таймера
+    private func basicAnimation() {
+        let basicAnimation = CABasicAnimation(keyPath: "strokeEnd")
+        basicAnimation.toValue = 0
+        basicAnimation.duration = CFTimeInterval(durationTimer)
+        basicAnimation.isRemovedOnCompletion = true
+        shepeLayer.add(basicAnimation, forKey: "basicAnimation")
+    }
+}
+
 
 extension TimerWorkoutViewController {
     private func setConstrains() {

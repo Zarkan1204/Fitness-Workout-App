@@ -7,7 +7,14 @@
 
 import UIKit
 
+protocol NextSetTimerProtocol: AnyObject {
+    func nextSetTimerTapped()
+    func editingTapped()
+}
+
 class TimerWorkoutParametersView: UIView {
+    
+    weak var cellNextSetTimerDelegate: NextSetTimerProtocol?
     
     private let workoutNameLabel = UILabel(text: "Squats", font: .robotoMedium24(), textColor: .specialGray)
     
@@ -71,7 +78,6 @@ class TimerWorkoutParametersView: UIView {
         backgroundColor = .specialBrown
         layer.cornerRadius = 10
         translatesAutoresizingMaskIntoConstraints = false
-        setsLabel.textAlignment = .right
         numberOfTimerLabel.textAlignment = .right
         addSubview(workoutNameLabel)
         setsStackView = UIStackView(arrangedSubviews: [setsLabel, numberOfSetsLabel],
@@ -90,11 +96,24 @@ class TimerWorkoutParametersView: UIView {
         addSubview(nextButton)
     }
     @objc private func editingButtonTapped() {
-        print("editing")
+        cellNextSetTimerDelegate?.editingTapped()
     }
     
     @objc private func nextButtonTapped() {
-        print("next")
+        cellNextSetTimerDelegate?.nextSetTimerTapped()
+    }
+    
+    // обнавляем лейблы
+    public func refreshLabels(model: WorkoutModel, numberOfSet: Int) {
+        workoutNameLabel.text = model.workoutName
+        numberOfSetsLabel.text = "\(numberOfSet)/\(model.workoutSets)"
+        numberOfTimerLabel.text = "\(model.workoutTimer.getTimeFromSeconds())"
+    }
+    
+    //кнопки не работают когда идет таймер
+    public func buttonIsEnable(_ value: Bool) {
+        editingButton.isEnabled = value
+        nextButton.isEnabled = value
     }
 }
 

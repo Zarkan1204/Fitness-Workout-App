@@ -42,6 +42,14 @@ class RealmManager {
         }
     }
     
+    //обновляем значения сетс и таймер в алерте всплывающем
+    func updateSetsTimerWorkoutModule(model: WorkoutModel, sets: Int, timer: Int) {
+        try! realm.write {
+            model.workoutSets = sets
+            model.workoutTimer = timer
+        }
+    }
+    
     // тренировку завершаем 
     func updateStatusWorkoutModule(model: WorkoutModel) {
             try! realm.write {
