@@ -12,6 +12,8 @@ class EditingProfileWorkoutViewController: UIViewController {
     private let editingProfileLabel = UILabel(text: "EDITING PROFILE",
                                           font: .robotoMedium24(),
                                           textColor: .specialGray)
+    
+    private lazy var closeButton = CloseButton(type: .system)
 
     private let profilePhotoImageView: UIImageView = {
         let imageView = UIImageView()
@@ -53,6 +55,8 @@ class EditingProfileWorkoutViewController: UIViewController {
         view.backgroundColor = .specialBackground
         
         view.addSubview(editingProfileLabel)
+        view.addSubview(closeButton)
+        closeButton.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
         view.addSubview(greenBackgroundProfileView)
         view.addSubview(profilePhotoImageView)
         view.addSubview(firstNameLabel)
@@ -69,6 +73,10 @@ class EditingProfileWorkoutViewController: UIViewController {
     @objc private func saveButtonTapped() {
         print("save")
     }
+    
+    @objc private func closeButtonTapped() {
+        dismiss(animated: true)
+    }
 }
 
 extension EditingProfileWorkoutViewController {
@@ -76,6 +84,11 @@ extension EditingProfileWorkoutViewController {
         NSLayoutConstraint.activate([
             editingProfileLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
             editingProfileLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            closeButton.centerYAnchor.constraint(equalTo: editingProfileLabel.centerYAnchor),
+            closeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            closeButton.heightAnchor.constraint(equalToConstant: 33),
+            closeButton.widthAnchor.constraint(equalToConstant: 33),
         
             profilePhotoImageView.topAnchor.constraint(equalTo: editingProfileLabel.bottomAnchor, constant: 10),
             profilePhotoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),

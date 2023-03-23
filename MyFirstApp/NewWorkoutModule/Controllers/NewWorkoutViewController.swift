@@ -30,6 +30,7 @@ class NewWorkoutViewController: UIViewController {
     private let newWorkoutLabel = UILabel(text: "NEW WORKOUT",
                                           font: .robotoMedium24(),
                                           textColor: .specialGray)
+    
     private lazy var closeButton = CloseButton(type: .system)
     
     private let nameView = NameView()
@@ -44,8 +45,6 @@ class NewWorkoutViewController: UIViewController {
     
     //создали модель
     private var workoutModel  = WorkoutModel()
-    
-//    private var nameImageWorkout = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,7 +65,6 @@ class NewWorkoutViewController: UIViewController {
         imageWorkoutView.setDelegate(delegate: self)
         stackView = UIStackView(arrangedSubviews: [nameView,
                                                    imageWorkoutView,
-                                                   //selectWorkoutCollectionView,
                                                    dateAndRepeatView,
                                                    repsOrTimerView],
                                 axis: .vertical,

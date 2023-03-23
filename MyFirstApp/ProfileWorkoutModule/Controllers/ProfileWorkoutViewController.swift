@@ -12,7 +12,7 @@ class ProfileWorkoutViewController: UIViewController {
     private let profileLabel = UILabel(text: "PROFILE",
                                           font: .robotoMedium24(),
                                           textColor: .specialGray)
-
+    
     private let photoImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = #colorLiteral(red: 0.8044065833, green: 0.8044064641, blue: 0.8044064641, alpha: 1)
@@ -43,8 +43,23 @@ class ProfileWorkoutViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-
     
+    private let profileWorkoutCollectionView = ProfileWorkoutCollectionView()
+
+    private let targetLabel = UILabel(text: "TARGET: 20 Workouts",
+                                      font: .robotoMedium16(),
+                                      textColor: .specialBlack)
+    
+    private let minCountLabel = UILabel(text: "2",
+                                          font: .robotoBold24(),
+                                          textColor: .specialBlack)
+    
+    private let maxCountLabel = UILabel(text: "20",
+                                          font: .robotoBold24(),
+                                          textColor: .specialBlack)
+    
+    private var countStackView = UIStackView()
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -65,10 +80,18 @@ class ProfileWorkoutViewController: UIViewController {
         view.addSubview(heightLabel)
         view.addSubview(weightLabel)
         view.addSubview(editingButton)
+        view.addSubview(profileWorkoutCollectionView)
+        view.addSubview(targetLabel)
+        countStackView = UIStackView(arrangedSubviews: [minCountLabel, maxCountLabel],
+                                    axis: .horizontal,
+                                    spacing: 10)
+        view.addSubview(countStackView)
     }
     
     @objc private func editingButtonTap() {
-        print("editing")
+        let editingProfileWorkoutViewController = EditingProfileWorkoutViewController()
+        editingProfileWorkoutViewController.modalPresentationStyle = .fullScreen
+        present(editingProfileWorkoutViewController, animated: true)
     }
 }
 
@@ -77,7 +100,7 @@ extension ProfileWorkoutViewController {
         NSLayoutConstraint.activate([
             profileLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
             profileLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-        
+            
             photoImageView.topAnchor.constraint(equalTo: profileLabel.bottomAnchor, constant: 10),
             photoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             photoImageView.widthAnchor.constraint(equalToConstant: 100),
@@ -103,7 +126,20 @@ extension ProfileWorkoutViewController {
             editingButton.widthAnchor.constraint(equalToConstant: 80),
             editingButton.heightAnchor.constraint(equalToConstant: 20),
             
+            profileWorkoutCollectionView.topAnchor.constraint(equalTo: editingButton.bottomAnchor, constant: 25),
+            profileWorkoutCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+            profileWorkoutCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+            profileWorkoutCollectionView.heightAnchor.constraint(equalToConstant: 230),
             
+            targetLabel.topAnchor.constraint(equalTo: profileWorkoutCollectionView.bottomAnchor, constant: 25),
+            targetLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+            targetLabel.widthAnchor.constraint(equalToConstant: 200),
+            targetLabel.heightAnchor.constraint(equalToConstant: 20),
+            
+            countStackView.topAnchor.constraint(equalTo: targetLabel.bottomAnchor, constant: 25),
+            countStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            countStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            countStackView.heightAnchor.constraint(equalToConstant: 25)  
         ])
     }
 }
