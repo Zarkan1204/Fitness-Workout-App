@@ -56,6 +56,8 @@
 		FAEE7A9629B1DA5300C52C25 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = FAEE7A9529B1DA5300C52C25 /* Realm */; };
 		FAEE7A9829B1DA5300C52C25 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = FAEE7A9729B1DA5300C52C25 /* RealmSwift */; };
 		FAEF6EFF29B9C97000A37582 /* RepsWorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEF6EFE29B9C97000A37582 /* RepsWorkoutViewController.swift */; };
+		FAF2B3F729CC1F3700AF768A /* ProfileWorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF2B3F629CC1F3700AF768A /* ProfileWorkoutViewController.swift */; };
+		FAF2B3F929CC20B700AF768A /* GreenBackProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF2B3F829CC20B700AF768A /* GreenBackProfileView.swift */; };
 		FAFBB9A229BB0B9300BDAAAC /* UIviewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFBB9A129BB0B9300BDAAAC /* UIviewController + Extension.swift */; };
 /* End PBXBuildFile section */
 
@@ -109,6 +111,8 @@
 		FADFF67629AE360E003C5818 /* NewWorkoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWorkoutViewController.swift; sourceTree = "<group>"; };
 		FADFF67829AE3DF5003C5818 /* NameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameView.swift; sourceTree = "<group>"; };
 		FAEF6EFE29B9C97000A37582 /* RepsWorkoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepsWorkoutViewController.swift; sourceTree = "<group>"; };
+		FAF2B3F629CC1F3700AF768A /* ProfileWorkoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileWorkoutViewController.swift; sourceTree = "<group>"; };
+		FAF2B3F829CC20B700AF768A /* GreenBackProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenBackProfileView.swift; sourceTree = "<group>"; };
 		FAFBB9A129BB0B9300BDAAAC /* UIviewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIviewController + Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -385,6 +389,7 @@
 		FAA4FC7429CAE0A0006C4D63 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				FAF2B3F629CC1F3700AF768A /* ProfileWorkoutViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -392,6 +397,7 @@
 		FAA4FC7529CAE0B2006C4D63 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				FAF2B3F829CC20B700AF768A /* GreenBackProfileView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -584,6 +590,7 @@
 				FA2B9B1929ADE8A300344208 /* MainTabBarController.swift in Sources */,
 				FA1E1BAB29A8B9F800012C28 /* UIView + Extension.swift in Sources */,
 				FA37ABE429B1BAFB00C16623 /* CloseButton.swift in Sources */,
+				FAF2B3F729CC1F3700AF768A /* ProfileWorkoutViewController.swift in Sources */,
 				FA8B147429AC76A500882755 /* StatisticViewController.swift in Sources */,
 				FADFF67729AE360E003C5818 /* NewWorkoutViewController.swift in Sources */,
 				FA8B146929ABC3A700882755 /* UILabel + Extensions.swift in Sources */,
@@ -614,6 +621,7 @@
 				FA2CED2A29C47D28004A4040 /* WorkoutParametersView.swift in Sources */,
 				FA2CED3029C48B2E004A4040 /* TimerWorkoutViewController.swift in Sources */,
 				FA86BAE129A4ABFD004EFD02 /* SceneDelegate.swift in Sources */,
+				FAF2B3F929CC20B700AF768A /* GreenBackProfileView.swift in Sources */,
 				FA405F0829B5DF300085E01A /* Date + Extension.swift in Sources */,
 				FA405F0029B5C3680085E01A /* Int + Extensions.swift in Sources */,
 			);
