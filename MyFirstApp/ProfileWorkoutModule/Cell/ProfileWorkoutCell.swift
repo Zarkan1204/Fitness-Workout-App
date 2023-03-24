@@ -14,7 +14,7 @@ class ProfileWorkoutCell: UICollectionViewCell {
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "testWorkout")?.withRenderingMode(.alwaysTemplate)
-        imageView.tintColor = .specialDarkGreen
+        imageView.tintColor = .white
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView

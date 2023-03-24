@@ -33,8 +33,8 @@ class ProfileWorkoutCollectionView: UICollectionView {
     
     private func setupLayout() {
         collectionLayout.scrollDirection = .horizontal
+        collectionLayout.minimumInteritemSpacing = 5
     }
-    
 }
 
 extension ProfileWorkoutCollectionView: UICollectionViewDataSource {
@@ -44,12 +44,13 @@ extension ProfileWorkoutCollectionView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileWorkoutCell.idProfileWorkoutCell, for: indexPath) as? ProfileWorkoutCell else { return ProfileWorkoutCell()}
+        cell.backgroundColor = (indexPath.row % 4 == 0 || indexPath.row % 4 == 3 ? .specialGreen : .specialDarkYellow)
                 return cell
     }
 }
 
 extension ProfileWorkoutCollectionView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: collectionView.frame.width * 0.48, height: 110)
+        CGSize(width: collectionView.frame.width / 2.07, height: 120)
     }
 }

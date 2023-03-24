@@ -46,7 +46,6 @@
 		FA8B147629AC7B4C00882755 /* StatisticTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B147529AC7B4C00882755 /* StatisticTableView.swift */; };
 		FA8B147929AC7B8000882755 /* StatisticTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B147829AC7B8000882755 /* StatisticTableViewCell.swift */; };
 		FAA4FC7A29CAE1C2006C4D63 /* EditingProfileWorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA4FC7929CAE1C2006C4D63 /* EditingProfileWorkoutViewController.swift */; };
-		FAA4FC7D29CAE5DB006C4D63 /* GreenBackgroundProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA4FC7C29CAE5DB006C4D63 /* GreenBackgroundProfileView.swift */; };
 		FAAE45B829B602D00090C820 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAE45B729B602D00090C820 /* RealmManager.swift */; };
 		FABD30F229CC3D170069F98A /* ProfileWorkoutCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABD30F129CC3D170069F98A /* ProfileWorkoutCollectionView.swift */; };
 		FABD30F429CC3F5D0069F98A /* ProfileWorkoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABD30F329CC3F5C0069F98A /* ProfileWorkoutCell.swift */; };
@@ -59,7 +58,6 @@
 		FAEE7A9829B1DA5300C52C25 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = FAEE7A9729B1DA5300C52C25 /* RealmSwift */; };
 		FAEF6EFF29B9C97000A37582 /* RepsWorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEF6EFE29B9C97000A37582 /* RepsWorkoutViewController.swift */; };
 		FAF2B3F729CC1F3700AF768A /* ProfileWorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF2B3F629CC1F3700AF768A /* ProfileWorkoutViewController.swift */; };
-		FAF2B3F929CC20B700AF768A /* GreenBackProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF2B3F829CC20B700AF768A /* GreenBackProfileView.swift */; };
 		FAFBB9A229BB0B9300BDAAAC /* UIviewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFBB9A129BB0B9300BDAAAC /* UIviewController + Extension.swift */; };
 /* End PBXBuildFile section */
 
@@ -105,7 +103,6 @@
 		FA8B147529AC7B4C00882755 /* StatisticTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticTableView.swift; sourceTree = "<group>"; };
 		FA8B147829AC7B8000882755 /* StatisticTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticTableViewCell.swift; sourceTree = "<group>"; };
 		FAA4FC7929CAE1C2006C4D63 /* EditingProfileWorkoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingProfileWorkoutViewController.swift; sourceTree = "<group>"; };
-		FAA4FC7C29CAE5DB006C4D63 /* GreenBackgroundProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenBackgroundProfileView.swift; sourceTree = "<group>"; };
 		FAAE45B729B602D00090C820 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		FABD30F129CC3D170069F98A /* ProfileWorkoutCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileWorkoutCollectionView.swift; sourceTree = "<group>"; };
 		FABD30F329CC3F5C0069F98A /* ProfileWorkoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileWorkoutCell.swift; sourceTree = "<group>"; };
@@ -116,7 +113,6 @@
 		FADFF67829AE3DF5003C5818 /* NameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameView.swift; sourceTree = "<group>"; };
 		FAEF6EFE29B9C97000A37582 /* RepsWorkoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepsWorkoutViewController.swift; sourceTree = "<group>"; };
 		FAF2B3F629CC1F3700AF768A /* ProfileWorkoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileWorkoutViewController.swift; sourceTree = "<group>"; };
-		FAF2B3F829CC20B700AF768A /* GreenBackProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenBackProfileView.swift; sourceTree = "<group>"; };
 		FAFBB9A129BB0B9300BDAAAC /* UIviewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIviewController + Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -401,7 +397,6 @@
 		FAA4FC7529CAE0B2006C4D63 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				FAF2B3F829CC20B700AF768A /* GreenBackProfileView.swift */,
 				FABD30F129CC3D170069F98A /* ProfileWorkoutCollectionView.swift */,
 			);
 			path = Views;
@@ -418,26 +413,9 @@
 		FAA4FC7729CAE15F006C4D63 /* EditingProfileWorkoutModule */ = {
 			isa = PBXGroup;
 			children = (
-				FAA4FC7B29CAE5B1006C4D63 /* Views */,
-				FAA4FC7829CAE188006C4D63 /* Controllers */,
-			);
-			path = EditingProfileWorkoutModule;
-			sourceTree = "<group>";
-		};
-		FAA4FC7829CAE188006C4D63 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
 				FAA4FC7929CAE1C2006C4D63 /* EditingProfileWorkoutViewController.swift */,
 			);
-			path = Controllers;
-			sourceTree = "<group>";
-		};
-		FAA4FC7B29CAE5B1006C4D63 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				FAA4FC7C29CAE5DB006C4D63 /* GreenBackgroundProfileView.swift */,
-			);
-			path = Views;
+			path = EditingProfileWorkoutModule;
 			sourceTree = "<group>";
 		};
 		FAAE45B629B602960090C820 /* Service */ = {
@@ -593,7 +571,6 @@
 				FA86BAE329A4ABFD004EFD02 /* MainViewController.swift in Sources */,
 				FA101C0C29C0D4AE00300332 /* SelectWorkoutCell.swift in Sources */,
 				FADB2BA229AF67BF00AAB063 /* RepsOrTimerView.swift in Sources */,
-				FAA4FC7D29CAE5DB006C4D63 /* GreenBackgroundProfileView.swift in Sources */,
 				FA2B9B1929ADE8A300344208 /* MainTabBarController.swift in Sources */,
 				FA1E1BAB29A8B9F800012C28 /* UIView + Extension.swift in Sources */,
 				FA37ABE429B1BAFB00C16623 /* CloseButton.swift in Sources */,
@@ -629,7 +606,6 @@
 				FA2CED2A29C47D28004A4040 /* WorkoutParametersView.swift in Sources */,
 				FA2CED3029C48B2E004A4040 /* TimerWorkoutViewController.swift in Sources */,
 				FA86BAE129A4ABFD004EFD02 /* SceneDelegate.swift in Sources */,
-				FAF2B3F929CC20B700AF768A /* GreenBackProfileView.swift in Sources */,
 				FA405F0829B5DF300085E01A /* Date + Extension.swift in Sources */,
 				FA405F0029B5C3680085E01A /* Int + Extensions.swift in Sources */,
 			);
