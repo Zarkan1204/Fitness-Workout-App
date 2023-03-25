@@ -11,7 +11,7 @@ class ProfileWorkoutCell: UICollectionViewCell {
     
     static let idProfileWorkoutCell = "idProfileWorkoutCell"
     
-    private let imageView: UIImageView = {
+    private let workoutImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "testWorkout")?.withRenderingMode(.alwaysTemplate)
         imageView.tintColor = .white
@@ -20,11 +20,11 @@ class ProfileWorkoutCell: UICollectionViewCell {
         return imageView
     }()
     
-    private let nameWorkoutLabel = UILabel(text: "BICEPS",
+    private let nameLabel = UILabel(text: "BICEPS",
                                           font: .robotoMedium24(),
                                           textColor: .white)
     
-    private let countWorkoutLabel = UILabel(text: "100",
+    private let numberLabel = UILabel(text: "100",
                                             font: .robotoBold48(),
                                             textColor: .white)
 
@@ -43,28 +43,25 @@ class ProfileWorkoutCell: UICollectionViewCell {
     private func setupViews() {
         self.layer.cornerRadius = 20
         self.backgroundColor = .specialGreen
-        self.addSubview(nameWorkoutLabel)
-        self.addSubview(countWorkoutLabel)
-        self.addSubview(imageView)
+        self.addSubview(nameLabel)
+        self.addSubview(numberLabel)
+        self.addSubview(workoutImageView)
     }
 }
 
 extension ProfileWorkoutCell {
     private func setConstraints() {
         NSLayoutConstraint.activate([
-            nameWorkoutLabel.topAnchor.constraint(equalTo: topAnchor, constant: 5),
-            nameWorkoutLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            nameWorkoutLabel.heightAnchor.constraint(equalToConstant: 30),
-            
-            imageView.topAnchor.constraint(equalTo: nameWorkoutLabel.bottomAnchor, constant: 0),
-            imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            imageView.widthAnchor.constraint(equalToConstant: 59),
-            imageView.heightAnchor.constraint(equalToConstant: 67),
-            
-            countWorkoutLabel.topAnchor.constraint(equalTo: nameWorkoutLabel.bottomAnchor, constant: 3),
-            countWorkoutLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-            countWorkoutLabel.widthAnchor.constraint(equalToConstant: 82),
-            countWorkoutLabel.heightAnchor.constraint(equalToConstant: 56) 
+            nameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10),
+            nameLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+
+            workoutImageView.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 10),
+            workoutImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            workoutImageView.heightAnchor.constraint(equalToConstant: 57),
+            workoutImageView.widthAnchor.constraint(equalToConstant: 57),
+
+            numberLabel.centerYAnchor.constraint(equalTo: workoutImageView.centerYAnchor),
+            numberLabel.leadingAnchor.constraint(equalTo: workoutImageView.trailingAnchor, constant: 10)
         ])
     }
 }
