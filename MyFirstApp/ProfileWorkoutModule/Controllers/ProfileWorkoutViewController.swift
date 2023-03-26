@@ -68,7 +68,7 @@ class ProfileWorkoutViewController: UIViewController {
                                           font: .robotoBold24(),
                                           textColor: .specialBlack)
     
-    private var countStackView = UIStackView()
+    private var targetStackView = UIStackView()
     
     private let targetView: UIView = {
         let view = UIView()
@@ -115,10 +115,10 @@ class ProfileWorkoutViewController: UIViewController {
         view.addSubview(editingButton)
         view.addSubview(profileWorkoutCollectionView)
         view.addSubview(targetLabel)
-        countStackView = UIStackView(arrangedSubviews: [minCountLabel, maxCountLabel],
+        targetStackView = UIStackView(arrangedSubviews: [minCountLabel, maxCountLabel],
                                     axis: .horizontal,
                                     spacing: 10)
-        view.addSubview(countStackView)
+        view.addSubview(targetStackView)
         view.addSubview(targetView)
         view.addSubview(progressView)
     }
@@ -174,12 +174,12 @@ extension ProfileWorkoutViewController {
             targetLabel.widthAnchor.constraint(equalToConstant: 200),
             targetLabel.heightAnchor.constraint(equalToConstant: 20),
             
-            countStackView.topAnchor.constraint(equalTo: targetLabel.bottomAnchor, constant: 25),
-            countStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            countStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            countStackView.heightAnchor.constraint(equalToConstant: 25),
+            targetStackView.topAnchor.constraint(equalTo: targetLabel.bottomAnchor, constant: 25),
+            targetStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            targetStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            targetStackView.heightAnchor.constraint(equalToConstant: 25),
                         
-            targetView.topAnchor.constraint(equalTo: countStackView.bottomAnchor, constant: 3),
+            targetView.topAnchor.constraint(equalTo: targetStackView.bottomAnchor, constant: 3),
             targetView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             targetView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             targetView.heightAnchor.constraint(equalToConstant: 28),

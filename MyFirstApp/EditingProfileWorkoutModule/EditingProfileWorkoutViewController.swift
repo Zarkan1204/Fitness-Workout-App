@@ -42,15 +42,17 @@ class EditingProfileWorkoutViewController: UIViewController {
     public let secondNameTextField = BrownTextField()
     
     private let weightLabel = UILabel(text: "Weight")
-    public let weightNameTextField = BrownTextField()
+    public let weightTextField = BrownTextField()
     
     private let heightLabel = UILabel(text: "Height")
-    public let heightNameTextField = BrownTextField()
+    public let heightTextField = BrownTextField()
     
     private let targetLabel = UILabel(text: "Target")
     private let targetTextField = BrownTextField()
     
     private lazy var saveButton = GreenButton(text: "SAVE")
+    
+    private var userModel = UserModel()
 
     override func viewDidLayoutSubviews() {
         addPhotoImageView.layer.cornerRadius = addPhotoImageView.frame.height / 2
@@ -61,6 +63,8 @@ class EditingProfileWorkoutViewController: UIViewController {
         
         setupView()
         setConstraints()
+        addTap()
+        loudUserInfo()
     }
     
     private func setupView() {
@@ -76,20 +80,90 @@ class EditingProfileWorkoutViewController: UIViewController {
         view.addSubview(secondNameLabel)
         view.addSubview(secondNameTextField)
         view.addSubview(weightLabel)
-        view.addSubview(weightNameTextField)
+        view.addSubview(weightTextField)
         view.addSubview(heightLabel)
-        view.addSubview(heightNameTextField)
+        view.addSubview(heightTextField)
         view.addSubview(targetLabel)
         view.addSubview(targetTextField)
         view.addSubview(saveButton)
     }
     
     @objc private func saveButtonTapped() {
-        print("save")
+       setUserModel()
+        
+        let userArray = RealmManager.shared.getResultUserModel()
+        
+        if userArray.count == 0 {
+            RealmManager.shared.saveUserModel(userModel)
+        } else {
+            RealmManager.shared.updateUserModule(model: userModel)
+        }
+        userModel = UserModel()
     }
     
     @objc private func closeButtonTapped() {
         dismiss(animated: true)
+    }
+    // накинули жест на юзерфото
+    private func addTap() {
+        let tapImageView = UITapGestureRecognizer(target: self, action: #selector(setUserPhoto))
+        addPhotoImageView.isUserInteractionEnabled = true
+        addPhotoImageView.addGestureRecognizer(tapImageView)
+    }
+    
+    @objc private func setUserPhoto() {
+        print("tapImage")
+    }
+    
+    private func setUserModel() {
+        guard let firstName = firstNameTextField.text,
+              let secondName = secondNameTextField.text,
+              let height = heightTextField.text,
+              let weight = weightTextField.text,
+              let target = targetTextField.text else {
+            return
+        }
+        
+        guard let intWeight = Int(weight),
+              let intHeight = Int(height),
+              let intTarget = Int(target) else {
+            return
+        }
+        
+        userModel.userFirstName = firstName
+        userModel.userSecondName = secondName
+        userModel.userHeight = intHeight
+        userModel.userWeight = intWeight
+        userModel.userTarget = intTarget
+        
+        if addPhotoImageView.image == UIImage(named: "addPhoto") {
+            userModel.userImage = nil
+        } else {
+            guard let imageData = addPhotoImageView.image?.pngData() else {
+                return
+            }
+            userModel.userImage = imageData
+        }
+    }
+   //если закрыли экран editing profile данные все остаются
+    private func loudUserInfo() {
+        
+        let userArray = RealmManager.shared.getResultUserModel()
+        
+        if userArray.count != 0 {
+            firstNameTextField.text = userArray[0].userFirstName
+            secondNameTextField.text = userArray[0].userSecondName
+            weightTextField.text = "\(userArray[0].userWeight)"
+            heightTextField.text = "\(userArray[0].userHeight)"
+            targetTextField.text = "\(userArray[0].userTarget)"
+            
+            guard let data = userArray[0].userImage,
+                  let image = UIImage(data: data) else {
+                return
+            }
+            addPhotoImageView.image = image
+            addPhotoImageView.contentMode = .scaleAspectFit
+        }
     }
 }
 
@@ -136,21 +210,21 @@ extension EditingProfileWorkoutViewController {
             weightLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
             weightLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
-            weightNameTextField.topAnchor.constraint(equalTo: weightLabel.bottomAnchor, constant: 5),
-            weightNameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            weightNameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            weightNameTextField.heightAnchor.constraint(equalToConstant: 40),
+            weightTextField.topAnchor.constraint(equalTo: weightLabel.bottomAnchor, constant: 5),
+            weightTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            weightTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            weightTextField.heightAnchor.constraint(equalToConstant: 40),
             
-            heightLabel.topAnchor.constraint(equalTo: weightNameTextField.bottomAnchor, constant: 20),
+            heightLabel.topAnchor.constraint(equalTo: weightTextField.bottomAnchor, constant: 20),
             heightLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
             heightLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
-            heightNameTextField.topAnchor.constraint(equalTo: heightLabel.bottomAnchor, constant: 5),
-            heightNameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            heightNameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            heightNameTextField.heightAnchor.constraint(equalToConstant: 40),
+            heightTextField.topAnchor.constraint(equalTo: heightLabel.bottomAnchor, constant: 5),
+            heightTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            heightTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            heightTextField.heightAnchor.constraint(equalToConstant: 40),
             
-            targetLabel.topAnchor.constraint(equalTo: heightNameTextField.bottomAnchor, constant: 20),
+            targetLabel.topAnchor.constraint(equalTo: heightTextField.bottomAnchor, constant: 20),
             targetLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
             targetLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             

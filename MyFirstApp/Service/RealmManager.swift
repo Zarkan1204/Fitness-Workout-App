@@ -52,9 +52,38 @@ class RealmManager {
     
     // тренировку завершаем 
     func updateStatusWorkoutModule(model: WorkoutModel) {
-            try! realm.write {
-                model.workoutStatus = true
+        try! realm.write {
+            model.workoutStatus = true
+        }
+    }
+    
+    
+    //User
+    
+    //метод выдает все записи из базы данных
+    func getResultUserModel() -> Results<UserModel> {
+        realm.objects(UserModel.self)
+    }
+    
+    //метод сохраняет данные о юзер
+    func saveUserModel(_ model: UserModel) {
+        try! realm.write {
+            realm.add(model)
+        }
+    }
+    
+    //обновляем пользователя
+    func updateUserModule(model: UserModel) {
+        
+        let users = realm.objects(UserModel.self)
+        
+        try! realm.write {
+            users[0].userFirstName = model.userFirstName
+            users[0].userSecondName = model.userSecondName
+            users[0].userWeight = model.userWeight
+            users[0].userHeight = model.userHeight
+            users[0].userTarget = model.userTarget
+            users[0].userImage = model.userImage
         }
     }
 }
-

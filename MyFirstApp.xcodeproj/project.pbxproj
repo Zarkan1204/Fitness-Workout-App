@@ -47,6 +47,7 @@
 		FA8B147929AC7B8000882755 /* StatisticTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B147829AC7B8000882755 /* StatisticTableViewCell.swift */; };
 		FAA4FC7A29CAE1C2006C4D63 /* EditingProfileWorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA4FC7929CAE1C2006C4D63 /* EditingProfileWorkoutViewController.swift */; };
 		FAAE45B829B602D00090C820 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAE45B729B602D00090C820 /* RealmManager.swift */; };
+		FAB1209229CF429A00C05290 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB1209129CF429A00C05290 /* UserModel.swift */; };
 		FABD30F229CC3D170069F98A /* ProfileWorkoutCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABD30F129CC3D170069F98A /* ProfileWorkoutCollectionView.swift */; };
 		FABD30F429CC3F5D0069F98A /* ProfileWorkoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABD30F329CC3F5C0069F98A /* ProfileWorkoutCell.swift */; };
 		FACC254829C6119E00F4AF76 /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACC254729C6119E00F4AF76 /* CustomAlert.swift */; };
@@ -104,6 +105,7 @@
 		FA8B147829AC7B8000882755 /* StatisticTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticTableViewCell.swift; sourceTree = "<group>"; };
 		FAA4FC7929CAE1C2006C4D63 /* EditingProfileWorkoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingProfileWorkoutViewController.swift; sourceTree = "<group>"; };
 		FAAE45B729B602D00090C820 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		FAB1209129CF429A00C05290 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		FABD30F129CC3D170069F98A /* ProfileWorkoutCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileWorkoutCollectionView.swift; sourceTree = "<group>"; };
 		FABD30F329CC3F5C0069F98A /* ProfileWorkoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileWorkoutCell.swift; sourceTree = "<group>"; };
 		FACC254729C6119E00F4AF76 /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 			isa = PBXGroup;
 			children = (
 				FA405F0529B5D8E50085E01A /* WorkoutModel.swift */,
+				FAB1209129CF429A00C05290 /* UserModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -580,6 +583,7 @@
 				FADFF67729AE360E003C5818 /* NewWorkoutViewController.swift in Sources */,
 				FA8B146929ABC3A700882755 /* UILabel + Extensions.swift in Sources */,
 				FA1E1BAE29A8BB7400012C28 /* UIColor + Extensions.swift in Sources */,
+				FAB1209229CF429A00C05290 /* UserModel.swift in Sources */,
 				FA23FA7F29C08EDF00760C83 /* DifferenceWorkout.swift in Sources */,
 				FA8B146F29ABD04600882755 /* WorkoutTableViewCell.swift in Sources */,
 				FA1E1BB429A8C38200012C28 /* CalendarCollectionViewCell.swift in Sources */,
