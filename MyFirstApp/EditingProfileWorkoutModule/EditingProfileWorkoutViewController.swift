@@ -64,7 +64,7 @@ class EditingProfileWorkoutViewController: UIViewController {
         setupView()
         setConstraints()
         addTap()
-        loudUserInfo()
+        loadUserInfo()
     }
     
     private func setupView() {
@@ -86,6 +86,7 @@ class EditingProfileWorkoutViewController: UIViewController {
         view.addSubview(targetLabel)
         view.addSubview(targetTextField)
         view.addSubview(saveButton)
+        saveButton.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
     }
     
     @objc private func saveButtonTapped() {
@@ -96,7 +97,7 @@ class EditingProfileWorkoutViewController: UIViewController {
         if userArray.count == 0 {
             RealmManager.shared.saveUserModel(userModel)
         } else {
-            RealmManager.shared.updateUserModule(model: userModel)
+            RealmManager.shared.updateUserModel(model: userModel)
         }
         userModel = UserModel()
     }
@@ -146,7 +147,7 @@ class EditingProfileWorkoutViewController: UIViewController {
         }
     }
    //если закрыли экран editing profile данные все остаются
-    private func loudUserInfo() {
+    private func loadUserInfo() {
         
         let userArray = RealmManager.shared.getResultUserModel()
         

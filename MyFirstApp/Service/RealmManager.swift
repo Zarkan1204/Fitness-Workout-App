@@ -73,7 +73,7 @@ class RealmManager {
     }
     
     //обновляем пользователя
-    func updateUserModule(model: UserModel) {
+    func updateUserModel(model: UserModel) {
         
         let users = realm.objects(UserModel.self)
         
