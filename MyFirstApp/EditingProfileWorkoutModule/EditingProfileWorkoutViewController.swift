@@ -148,10 +148,13 @@ class EditingProfileWorkoutViewController: UIViewController {
         if addPhotoImageView.image == UIImage(named: "addPhoto") {
             userModel.userImage = nil
         } else {
-            guard let imageData = addPhotoImageView.image?.pngData() else {
-                return
-            }
-            userModel.userImage = imageData
+//            guard let imageData = addPhotoImageView.image?.pngData() else {
+//                return
+//            }
+//            userModel.userImage = imageData
+            guard let image = addPhotoImageView.image else { return }
+            let jpegData = image.jpegData(compressionQuality: 1.0)
+            userModel.userImage = jpegData
         }
     }
    //если закрыли экран editing profile данные все остаются

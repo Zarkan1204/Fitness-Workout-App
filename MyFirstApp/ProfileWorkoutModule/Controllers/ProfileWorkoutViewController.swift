@@ -60,7 +60,7 @@ class ProfileWorkoutViewController: UIViewController {
                                       font: .robotoMedium16(),
                                       textColor: .specialBlack)
     
-    private let minCountLabel = UILabel(text: "2",
+    private let minCountLabel = UILabel(text: "0",
                                           font: .robotoBold24(),
                                           textColor: .specialBlack)
     
@@ -90,6 +90,10 @@ class ProfileWorkoutViewController: UIViewController {
         progressView.translatesAutoresizingMaskIntoConstraints = false
         return progressView
     }()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        setupUserParameters()
+    }
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -127,6 +131,25 @@ class ProfileWorkoutViewController: UIViewController {
         let editingProfileWorkoutViewController = EditingProfileWorkoutViewController()
         editingProfileWorkoutViewController.modalPresentationStyle = .fullScreen
         present(editingProfileWorkoutViewController, animated: true)
+    }
+    
+    //загружаем пользовательские параметры
+    private func setupUserParameters() {
+        let userArray = RealmManager.shared.getResultUserModel()
+        
+        if userArray.count != 0 {
+            userNameLabel.text = userArray[0].userFirstName + " " + userArray[0].userSecondName
+            heightLabel.text = "Height: \(userArray[0].userHeight)"
+            weightLabel.text = "Weight: \(userArray[0].userWeight)"
+            targetLabel.text = "TARGET: \(userArray[0].userTarget)"
+            maxCountLabel.text = "\(userArray[0].userTarget)"
+            
+            guard let data = userArray[0].userImage,
+                  let image = UIImage(data: data) else {
+                return
+            }
+            userPhotoImageView.image = image
+        }
     }
 }
 
