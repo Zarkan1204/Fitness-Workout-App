@@ -116,6 +116,7 @@ class NewWorkoutViewController: UIViewController {
             workoutModel.workoutSets != 0 &&       //два слайдера не должны быть = 0
             (workoutModel.workoutReps != 0 || workoutModel.workoutTimer != 0) {
             RealmManager.shared.saveWorkoutModel(workoutModel)
+            createNotification()
             presentSimpleAlert(title: "Success", message: nil)
             workoutModel = WorkoutModel()
             resetValues()
@@ -148,7 +149,14 @@ class NewWorkoutViewController: UIViewController {
     @objc private func hideKeyboard() {
         view.endEditing(true)
     }
+    
+    private func createNotification() {
+        let notification = Notifications()
+        let stringDate = workoutModel.workoutDate.yyyyMMddFromDate()
+        notification.sheduleDateNotification(date: workoutModel.workoutDate, id: "workout" + stringDate)
+    }
 }
+
 
 extension NewWorkoutViewController: ImageWorkoutProtocol {
     func setImage(imageName: String) {

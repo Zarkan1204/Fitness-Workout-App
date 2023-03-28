@@ -38,6 +38,7 @@
 		FA86BAE829A4AC00004EFD02 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA86BAE729A4AC00004EFD02 /* Assets.xcassets */; };
 		FA86BAEB29A4AC00004EFD02 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA86BAE929A4AC00004EFD02 /* LaunchScreen.storyboard */; };
 		FA86BAF829A4BADB004EFD02 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA86BAF729A4BADB004EFD02 /* CalendarView.swift */; };
+		FA876F0529D30B17003386CB /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA876F0429D30B17003386CB /* Notifications.swift */; };
 		FA8B146929ABC3A700882755 /* UILabel + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B146829ABC3A700882755 /* UILabel + Extensions.swift */; };
 		FA8B146B29ABC72700882755 /* MainTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B146A29ABC72700882755 /* MainTableView.swift */; };
 		FA8B146D29ABCCD300882755 /* UIStackView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B146C29ABCCD300882755 /* UIStackView + Extensions.swift */; };
@@ -96,6 +97,7 @@
 		FA86BAEA29A4AC00004EFD02 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA86BAEC29A4AC00004EFD02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA86BAF729A4BADB004EFD02 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		FA876F0429D30B17003386CB /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		FA8B146829ABC3A700882755 /* UILabel + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Extensions.swift"; sourceTree = "<group>"; };
 		FA8B146A29ABC72700882755 /* MainTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableView.swift; sourceTree = "<group>"; };
 		FA8B146C29ABCCD300882755 /* UIStackView + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView + Extensions.swift"; sourceTree = "<group>"; };
@@ -299,6 +301,7 @@
 			children = (
 				FA86BADE29A4ABFD004EFD02 /* AppDelegate.swift */,
 				FA86BAE029A4ABFD004EFD02 /* SceneDelegate.swift */,
+				FA876F0429D30B17003386CB /* Notifications.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -589,6 +592,7 @@
 				FA1E1BB429A8C38200012C28 /* CalendarCollectionViewCell.swift in Sources */,
 				FA8B146B29ABC72700882755 /* MainTableView.swift in Sources */,
 				FA8B146D29ABCCD300882755 /* UIStackView + Extensions.swift in Sources */,
+				FA876F0529D30B17003386CB /* Notifications.swift in Sources */,
 				FA2CED3229C48B61004A4040 /* TimerWorkoutParametersView.swift in Sources */,
 				FA1E1BB129A8C00300012C28 /* CalendarCollectionView.swift in Sources */,
 				FA1E1BAF29A8BB7400012C28 /* UIFont + Extensions.swift in Sources */,
