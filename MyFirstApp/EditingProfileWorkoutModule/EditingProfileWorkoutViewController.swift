@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import PhotosUI
 
 class EditingProfileWorkoutViewController: UIViewController {
      
@@ -113,7 +114,14 @@ class EditingProfileWorkoutViewController: UIViewController {
     }
     
     @objc private func setUserPhoto() {
-        print("tapImage")
+        alertPhotoOrCamera { [weak self] sourse in
+            guard let self = self else { return }
+            if #available(iOS 14, *) {
+                self.presentPHPicker()
+            } else {
+                self.chooseImagePicker(sourse: sourse)
+            }
+        }
     }
     
     private func setUserModel() {
@@ -165,6 +173,55 @@ class EditingProfileWorkoutViewController: UIViewController {
             addPhotoImageView.image = image
             addPhotoImageView.contentMode = .scaleAspectFit
         }
+    }
+}
+
+// пытаемся открыть стандартную галерею для выбора фото
+extension EditingProfileWorkoutViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    private func chooseImagePicker(sourse: UIImagePickerController.SourceType) {
+        if UIImagePickerController.isSourceTypeAvailable(sourse) {
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.allowsEditing = true
+            imagePicker.sourceType = sourse
+            present(imagePicker, animated: true)
+        }
+    }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let image = info[.editedImage] as? UIImage
+        addPhotoImageView.image = image
+        addPhotoImageView.contentMode = .scaleAspectFit
+        dismiss(animated: true)
+    }
+}
+
+@available(iOS 14, *)
+extension EditingProfileWorkoutViewController: PHPickerViewControllerDelegate {
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        picker.dismiss(animated: true)
+        results.forEach { result in
+            result.itemProvider.loadObject(ofClass: UIImage.self) { reading, error in
+                guard let image = reading as? UIImage, error == nil else {
+                    return
+                }
+                
+                DispatchQueue.main.async {
+                    self.addPhotoImageView.image = image
+                    self.addPhotoImageView.contentMode = .scaleAspectFill
+                }
+            }
+        }
+    }
+   
+    private func presentPHPicker() {
+        var phPickerConfig = PHPickerConfiguration(photoLibrary: .shared())
+        phPickerConfig.selectionLimit = 1
+        phPickerConfig.filter = PHPickerFilter.any(of: [.images])
+        
+        let phPickerVC = PHPickerViewController(configuration: phPickerConfig)
+        phPickerVC.delegate = self
+        present(phPickerVC, animated: true)
     }
 }
 
