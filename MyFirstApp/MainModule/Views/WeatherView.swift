@@ -57,6 +57,44 @@ class WeatherView: UIView {
         self.addSubview(descriptionWeatherLabel)
         self.addSubview(imageWeather)
     }
+    
+    public func updateImage(data: Data) {
+        guard let image = UIImage(data: data) else { return }
+        imageWeather.image = image
+    }
+    
+    public func updateLabels(model: WeatherModel) {
+        titleWeatherLabel.text = model.weather[0].myDescription + "  \(model.main.temperatureCelsius)°C"
+        
+        switch model.weather[0].weatherDescription {
+        case "shower snow":
+            descriptionWeatherLabel.text = "Лучше остаться дома и провести домашнюю тренировку"
+        case "clear sky":
+            descriptionWeatherLabel.text = "Прекрасная погода для тренировки на улице"
+        case "few clouds":
+            descriptionWeatherLabel.text = "На улице облачно"
+        case "scattered clouds":
+            descriptionWeatherLabel.text = "На улице облачно"
+        case "broken clouds":
+            descriptionWeatherLabel.text = "На улице облачно"
+        case "shower rain":
+            descriptionWeatherLabel.text = "Лучше остаться дома и провести домашнюю тренировку"
+        case "rain":
+            descriptionWeatherLabel.text = "Лучше остаться дома и провести домашнюю тренировку"
+        case "thunderstorm":
+            descriptionWeatherLabel.text = "Лучше остаться дома и провести домашнюю тренировку"
+        case "snow":
+            descriptionWeatherLabel.text = "Лучше остаться дома и провести домашнюю тренировку"
+        case "mist":
+            descriptionWeatherLabel.text = "На улице туман"
+        case "overcast clouds":
+            descriptionWeatherLabel.text = "На улице облачно"
+        case "light shower snow":
+            descriptionWeatherLabel.text = "Лучше остаться дома и провести домашнюю тренировку"
+        default:
+            descriptionWeatherLabel.text = "No data"
+        }
+    }
 }
     
 extension WeatherView {

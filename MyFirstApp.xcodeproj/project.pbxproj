@@ -30,6 +30,10 @@
 		FA405F0329B5C61F0085E01A /* SliderTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA405F0229B5C61F0085E01A /* SliderTypes.swift */; };
 		FA405F0629B5D8E50085E01A /* WorkoutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA405F0529B5D8E50085E01A /* WorkoutModel.swift */; };
 		FA405F0829B5DF300085E01A /* Date + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA405F0729B5DF300085E01A /* Date + Extension.swift */; };
+		FA65984B29D417FC00038FD3 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA65984A29D417FC00038FD3 /* WeatherModel.swift */; };
+		FA65984D29D41AAA00038FD3 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA65984C29D41AAA00038FD3 /* NetworkRequest.swift */; };
+		FA65984F29D41DE200038FD3 /* NetworkDataFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA65984E29D41DE200038FD3 /* NetworkDataFetch.swift */; };
+		FA65985129D4233800038FD3 /* NetworkImageRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA65985029D4233800038FD3 /* NetworkImageRequest.swift */; };
 		FA79E3B929A4F3B2004DCD81 /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA79E3B829A4F3B2004DCD81 /* WeatherView.swift */; };
 		FA83602C29C3575200DD0C9F /* ImageWorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA83602B29C3575200DD0C9F /* ImageWorkoutView.swift */; };
 		FA86BADF29A4ABFD004EFD02 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA86BADE29A4ABFD004EFD02 /* AppDelegate.swift */; };
@@ -87,6 +91,10 @@
 		FA405F0229B5C61F0085E01A /* SliderTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderTypes.swift; sourceTree = "<group>"; };
 		FA405F0529B5D8E50085E01A /* WorkoutModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutModel.swift; sourceTree = "<group>"; };
 		FA405F0729B5DF300085E01A /* Date + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date + Extension.swift"; sourceTree = "<group>"; };
+		FA65984A29D417FC00038FD3 /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
+		FA65984C29D41AAA00038FD3 /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
+		FA65984E29D41DE200038FD3 /* NetworkDataFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataFetch.swift; sourceTree = "<group>"; };
+		FA65985029D4233800038FD3 /* NetworkImageRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkImageRequest.swift; sourceTree = "<group>"; };
 		FA79E3B829A4F3B2004DCD81 /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
 		FA83602B29C3575200DD0C9F /* ImageWorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageWorkoutView.swift; sourceTree = "<group>"; };
 		FA86BADB29A4ABFD004EFD02 /* MyFirstApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyFirstApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -257,8 +265,19 @@
 			children = (
 				FA405F0529B5D8E50085E01A /* WorkoutModel.swift */,
 				FAB1209129CF429A00C05290 /* UserModel.swift */,
+				FA65984A29D417FC00038FD3 /* WeatherModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		FA65984929D417B700038FD3 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				FA65984C29D41AAA00038FD3 /* NetworkRequest.swift */,
+				FA65984E29D41DE200038FD3 /* NetworkDataFetch.swift */,
+				FA65985029D4233800038FD3 /* NetworkImageRequest.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		FA86BAD229A4ABFC004EFD02 = {
@@ -289,6 +308,7 @@
 				FA8B147029AC760000882755 /* StatisticModule */,
 				FAA4FC7329CAE05A006C4D63 /* ProfileWorkoutModule */,
 				FAA4FC7729CAE15F006C4D63 /* EditingProfileWorkoutModule */,
+				FA65984929D417B700038FD3 /* Network */,
 				FAAE45B629B602960090C820 /* Service */,
 				FA1E1BA029A8B73300012C28 /* Extensions */,
 				FA86BAF629A4AFFA004EFD02 /* SupportingFiles */,
@@ -592,12 +612,14 @@
 				FA1E1BB429A8C38200012C28 /* CalendarCollectionViewCell.swift in Sources */,
 				FA8B146B29ABC72700882755 /* MainTableView.swift in Sources */,
 				FA8B146D29ABCCD300882755 /* UIStackView + Extensions.swift in Sources */,
+				FA65984D29D41AAA00038FD3 /* NetworkRequest.swift in Sources */,
 				FA876F0529D30B17003386CB /* Notifications.swift in Sources */,
 				FA2CED3229C48B61004A4040 /* TimerWorkoutParametersView.swift in Sources */,
 				FA1E1BB129A8C00300012C28 /* CalendarCollectionView.swift in Sources */,
 				FA1E1BAF29A8BB7400012C28 /* UIFont + Extensions.swift in Sources */,
 				FA86BADF29A4ABFD004EFD02 /* AppDelegate.swift in Sources */,
 				FA86BAF829A4BADB004EFD02 /* CalendarView.swift in Sources */,
+				FA65984F29D41DE200038FD3 /* NetworkDataFetch.swift in Sources */,
 				FA8B147929AC7B8000882755 /* StatisticTableViewCell.swift in Sources */,
 				FAEF6EFF29B9C97000A37582 /* RepsWorkoutViewController.swift in Sources */,
 				FA83602C29C3575200DD0C9F /* ImageWorkoutView.swift in Sources */,
@@ -613,8 +635,10 @@
 				FAFBB9A229BB0B9300BDAAAC /* UIviewController + Extension.swift in Sources */,
 				FA2CED2A29C47D28004A4040 /* WorkoutParametersView.swift in Sources */,
 				FA2CED3029C48B2E004A4040 /* TimerWorkoutViewController.swift in Sources */,
+				FA65984B29D417FC00038FD3 /* WeatherModel.swift in Sources */,
 				FA86BAE129A4ABFD004EFD02 /* SceneDelegate.swift in Sources */,
 				FA405F0829B5DF300085E01A /* Date + Extension.swift in Sources */,
+				FA65985129D4233800038FD3 /* NetworkImageRequest.swift in Sources */,
 				FA405F0029B5C3680085E01A /* Int + Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

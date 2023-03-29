@@ -79,7 +79,7 @@ class MainViewController: UIViewController {
         
         setupViews()
         setConstrains()
-        
+        getWeather()
     }
     
     private func setupViews() {
@@ -146,6 +146,24 @@ class MainViewController: UIViewController {
                 return
             }
             userPhotoImageView.image = image
+        }
+    }
+    
+    private func getWeather() {
+        NetworkDataFetch.shared.fetchWeather { [weak self] result, error in
+            guard let self = self else { return }
+            if let model = result {
+                print(model)
+                self.weatherView.updateLabels(model: model)
+                NetworkImageRequest.shared.requestData(id: model.weather[0].icon) { result in
+                    switch result {
+                    case .success(let data):
+                        self.weatherView.updateImage(data: data)
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                    }
+                }
+            }
         }
     }
 }
