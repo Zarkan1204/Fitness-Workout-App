@@ -34,6 +34,8 @@
 		FA65984D29D41AAA00038FD3 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA65984C29D41AAA00038FD3 /* NetworkRequest.swift */; };
 		FA65984F29D41DE200038FD3 /* NetworkDataFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA65984E29D41DE200038FD3 /* NetworkDataFetch.swift */; };
 		FA65985129D4233800038FD3 /* NetworkImageRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA65985029D4233800038FD3 /* NetworkImageRequest.swift */; };
+		FA65985829D45A2D00038FD3 /*  OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA65985729D45A2D00038FD3 /*  OnboardingViewController.swift */; };
+		FA65985A29D45A6200038FD3 /* OnboardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA65985929D45A6200038FD3 /* OnboardingCollectionViewCell.swift */; };
 		FA79E3B929A4F3B2004DCD81 /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA79E3B829A4F3B2004DCD81 /* WeatherView.swift */; };
 		FA83602C29C3575200DD0C9F /* ImageWorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA83602B29C3575200DD0C9F /* ImageWorkoutView.swift */; };
 		FA86BADF29A4ABFD004EFD02 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA86BADE29A4ABFD004EFD02 /* AppDelegate.swift */; };
@@ -95,6 +97,8 @@
 		FA65984C29D41AAA00038FD3 /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
 		FA65984E29D41DE200038FD3 /* NetworkDataFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataFetch.swift; sourceTree = "<group>"; };
 		FA65985029D4233800038FD3 /* NetworkImageRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkImageRequest.swift; sourceTree = "<group>"; };
+		FA65985729D45A2D00038FD3 /*  OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " OnboardingViewController.swift"; sourceTree = "<group>"; };
+		FA65985929D45A6200038FD3 /* OnboardingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCollectionViewCell.swift; sourceTree = "<group>"; };
 		FA79E3B829A4F3B2004DCD81 /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
 		FA83602B29C3575200DD0C9F /* ImageWorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageWorkoutView.swift; sourceTree = "<group>"; };
 		FA86BADB29A4ABFD004EFD02 /* MyFirstApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyFirstApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -280,6 +284,31 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		FA65985429D459E300038FD3 /* OnBoardingModule */ = {
+			isa = PBXGroup;
+			children = (
+				FA65985629D45A0C00038FD3 /* Views */,
+				FA65985529D459FE00038FD3 /* Controllers */,
+			);
+			path = OnBoardingModule;
+			sourceTree = "<group>";
+		};
+		FA65985529D459FE00038FD3 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FA65985729D45A2D00038FD3 /*  OnboardingViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		FA65985629D45A0C00038FD3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FA65985929D45A6200038FD3 /* OnboardingCollectionViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		FA86BAD229A4ABFC004EFD02 = {
 			isa = PBXGroup;
 			children = (
@@ -299,6 +328,7 @@
 		FA86BADD29A4ABFD004EFD02 /* MyFirstApp */ = {
 			isa = PBXGroup;
 			children = (
+				FA65985429D459E300038FD3 /* OnBoardingModule */,
 				FA86BAF229A4AF06004EFD02 /* Application */,
 				FA2B9B1729ADE86500344208 /* NavigationModule */,
 				FA86BAF329A4AF35004EFD02 /* MainModule */,
@@ -618,6 +648,7 @@
 				FA1E1BB129A8C00300012C28 /* CalendarCollectionView.swift in Sources */,
 				FA1E1BAF29A8BB7400012C28 /* UIFont + Extensions.swift in Sources */,
 				FA86BADF29A4ABFD004EFD02 /* AppDelegate.swift in Sources */,
+				FA65985829D45A2D00038FD3 /*  OnboardingViewController.swift in Sources */,
 				FA86BAF829A4BADB004EFD02 /* CalendarView.swift in Sources */,
 				FA65984F29D41DE200038FD3 /* NetworkDataFetch.swift in Sources */,
 				FA8B147929AC7B8000882755 /* StatisticTableViewCell.swift in Sources */,
@@ -640,6 +671,7 @@
 				FA405F0829B5DF300085E01A /* Date + Extension.swift in Sources */,
 				FA65985129D4233800038FD3 /* NetworkImageRequest.swift in Sources */,
 				FA405F0029B5C3680085E01A /* Int + Extensions.swift in Sources */,
+				FA65985A29D45A6200038FD3 /* OnboardingCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

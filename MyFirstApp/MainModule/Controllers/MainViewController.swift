@@ -74,6 +74,11 @@ class MainViewController: UIViewController {
         setupUserParameters()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        showOnboarding()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -164,6 +169,16 @@ class MainViewController: UIViewController {
                     }
                 }
             }
+        }
+    }
+    
+    private func showOnboarding() {
+        let userDefaults = UserDefaults.standard
+        let onBoardingWasViewed = userDefaults.bool(forKey: "OnBoardingWasViewed")
+        if onBoardingWasViewed == false {
+            let onboardingViewController = OnboardingViewController()
+            onboardingViewController.modalPresentationStyle = .fullScreen
+            present(onboardingViewController, animated: true)
         }
     }
 }
