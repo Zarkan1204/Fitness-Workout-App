@@ -76,22 +76,19 @@ class DateAndRepeatView: UIView {
                                       spacing: 10)
         backView.addSubview(repeatStackView)
     }
-   
-    //получаем дейтпикер и свитч для сборки в модель
+    
     public func getDateAndRepeat() -> (date: Date, isRepeat: Bool) {
         (datePicker.date, repeatSwitch.isOn)
     }
     
     public func resetDataAndRepeat() {
-        datePicker.date = Date()    //при сохранении дейтпикер обнуляется
-        repeatSwitch.isOn = true    //при сохранении свитч обнуляется
+        datePicker.date = Date()
+        repeatSwitch.isOn = true
     }
 }
 
 extension DateAndRepeatView {
-    
     private func setConstraints() {
-
         NSLayoutConstraint.activate([
             dateAndRepeatLabel.topAnchor.constraint(equalTo: topAnchor, constant: 0),
             dateAndRepeatLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 7),
@@ -101,11 +98,11 @@ extension DateAndRepeatView {
             backView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
             backView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
             backView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0),
-  
+            
             dateStackView.topAnchor.constraint(equalTo: backView.topAnchor, constant: 10),
             dateStackView.leadingAnchor.constraint(equalTo: backView.leadingAnchor, constant: 15),
             dateStackView.trailingAnchor.constraint(equalTo: backView.trailingAnchor, constant: -15),
-
+            
             repeatStackView.topAnchor.constraint(equalTo: dateStackView.bottomAnchor, constant: 10),
             repeatStackView.leadingAnchor.constraint(equalTo: backView.leadingAnchor, constant: 15),
             repeatStackView.trailingAnchor.constraint(equalTo: backView.trailingAnchor, constant: -15)

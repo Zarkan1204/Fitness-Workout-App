@@ -45,7 +45,7 @@ extension ProfileWorkoutCollectionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileWorkoutCell.idProfileWorkoutCell, for: indexPath) as? ProfileWorkoutCell else { return ProfileWorkoutCell()}
         cell.backgroundColor = (indexPath.row % 4 == 0 || indexPath.row % 4 == 3 ? .specialGreen : .specialDarkYellow)
-                return cell
+        return cell
     }
 }
 

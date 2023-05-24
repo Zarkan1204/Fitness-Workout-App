@@ -45,8 +45,6 @@ class CalendarCollectionView: UICollectionView {
     }
 }
 
-//MARK: - UICollectionViewDataSource
-
 extension CalendarCollectionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         7
@@ -56,7 +54,7 @@ extension CalendarCollectionView: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: idCalendaarCell, for: indexPath) as? CalendarCollectionViewCell else {
             return UICollectionViewCell()
         }
-        //устанавливаем дату и подсвечиваем сегодняшний день
+        
         let dateTimeZone = Date()
         let weekArray = dateTimeZone.getWeekArray()
         cell.dateForCell(numberOfDay: weekArray[1][indexPath.row], dayOfWeek: weekArray[0][indexPath.row])
@@ -67,8 +65,6 @@ extension CalendarCollectionView: UICollectionViewDataSource {
     }
 }
 
-//MARK: -  UICollectionViewDelegate
-
 extension CalendarCollectionView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let dateTimeZone = Date()
@@ -76,8 +72,6 @@ extension CalendarCollectionView: UICollectionViewDelegate {
         calendarDelegate?.selectitem(date: date)
     }
 }
-
-//MARK: - UICollectionViewDelegateFlowLayout
 
 extension CalendarCollectionView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

@@ -21,14 +21,13 @@ class ProfileWorkoutCell: UICollectionViewCell {
     }()
     
     private let nameLabel = UILabel(text: "BICEPS",
-                                          font: .robotoMedium24(),
-                                          textColor: .white)
+                                    font: .robotoMedium24(),
+                                    textColor: .white)
     
     private let numberLabel = UILabel(text: "100",
-                                            font: .robotoBold48(),
-                                            textColor: .white)
-
-     
+                                      font: .robotoBold48(),
+                                      textColor: .white)
+    
     override init(frame: CGRect) {
         super.init(frame: .zero)
         
@@ -54,12 +53,12 @@ extension ProfileWorkoutCell {
         NSLayoutConstraint.activate([
             nameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10),
             nameLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-
+            
             workoutImageView.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 10),
             workoutImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             workoutImageView.heightAnchor.constraint(equalToConstant: 57),
             workoutImageView.widthAnchor.constraint(equalToConstant: 57),
-
+            
             numberLabel.centerYAnchor.constraint(equalTo: workoutImageView.centerYAnchor),
             numberLabel.leadingAnchor.constraint(equalTo: workoutImageView.trailingAnchor, constant: 10)
         ])

@@ -14,7 +14,7 @@ struct OnboardingStruct {
 }
 
 class OnboardingViewController: UIViewController {
- 
+    
     private lazy var nextButton: UIButton = {
         let button = UIButton(type: .system)
         button.backgroundColor = .white
@@ -28,14 +28,14 @@ class OnboardingViewController: UIViewController {
     }()
     
     private let pageControl: UIPageControl = {
-       let pageControl = UIPageControl()
+        let pageControl = UIPageControl()
         pageControl.numberOfPages = 3
         pageControl.transform = CGAffineTransform.init(scaleX: 1.5, y: 1.5)
         pageControl.isEnabled = false
         pageControl.translatesAutoresizingMaskIntoConstraints = false
         return pageControl
     }()
-
+    
     let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 0
@@ -49,9 +49,7 @@ class OnboardingViewController: UIViewController {
     }()
     
     private let idOnboardingCell = "idOnboardingCell"
-    
     private var onboardingArray = [OnboardingStruct]()
-    
     private var collectionItem = 0
     
     override func viewDidLoad() {
@@ -64,21 +62,20 @@ class OnboardingViewController: UIViewController {
     
     private func setupViews() {
         view.backgroundColor = .specialGreen
-
         view.addSubview(nextButton)
         view.addSubview(pageControl)
         view.addSubview(collectionView)
         collectionView.register(OnboardingCollectionViewCell.self, forCellWithReuseIdentifier: idOnboardingCell)
         
         guard let imageFirst = UIImage(named: "onboardingFirst"),
-        let imageSecond = UIImage(named: "onboardingSecond"),
-        let imageThird = UIImage(named: "onboardingThird") else {
+              let imageSecond = UIImage(named: "onboardingSecond"),
+              let imageThird = UIImage(named: "onboardingThird") else {
             return
         }
         
         let firstScreen = OnboardingStruct(topLabel: "Have a good health",
-                                          bottomLabel: "Being healthy is all, no health is nothing. So why do not we",
-                                          image: imageFirst)
+                                           bottomLabel: "Being healthy is all, no health is nothing. So why do not we",
+                                           image: imageFirst)
         let secondScreen = OnboardingStruct(topLabel: "Be stronger",
                                             bottomLabel: "Take 30 minutes of bodybuilding every day to get physically fit and healthy.",
                                             image: imageSecond)
@@ -92,7 +89,7 @@ class OnboardingViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
     }
-
+    
     @objc private func nextButtonTapped() {
         
         if collectionItem == 1 {
@@ -116,8 +113,6 @@ class OnboardingViewController: UIViewController {
     }
 }
 
-//MARK: - UICollectionViewDataSource
-
 extension OnboardingViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -132,8 +127,6 @@ extension OnboardingViewController: UICollectionViewDataSource {
     }
 }
 
-//MARK: - UICollectionViewDelegateFlowLayout
-
 extension OnboardingViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         CGSize(width: view.frame.width, height: collectionView.frame.height)
@@ -143,18 +136,18 @@ extension OnboardingViewController: UICollectionViewDelegateFlowLayout {
 extension OnboardingViewController {
     
     private func setConstraints() {
-
+        
         NSLayoutConstraint.activate([
             nextButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -30),
             nextButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
             nextButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
             nextButton.heightAnchor.constraint(equalToConstant: 50),
-
+            
             pageControl.bottomAnchor.constraint(equalTo: nextButton.topAnchor, constant: -20),
             pageControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
             pageControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
             pageControl.heightAnchor.constraint(equalToConstant: 30),
-
+            
             collectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),

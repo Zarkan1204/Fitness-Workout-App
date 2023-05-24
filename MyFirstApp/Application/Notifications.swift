@@ -20,7 +20,6 @@ class Notifications: NSObject {
     }
     func getNotificationsSettings() {
         notificationCenter.getNotificationSettings { setting in
-           // print(setting)
         }
     }
     
@@ -60,7 +59,7 @@ extension Notifications: UNUserNotificationCenterDelegate {
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         
-        UIApplication.shared.applicationIconBadgeNumber = 0 
+        UIApplication.shared.applicationIconBadgeNumber = 0
         notificationCenter.removeAllDeliveredNotifications()
     }
 }

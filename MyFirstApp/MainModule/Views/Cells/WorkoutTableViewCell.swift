@@ -117,11 +117,8 @@ class WorkoutTableViewCell: UITableViewCell {
         workoutCellDeligate?.startButtonTapped(model: workoutModel)
     }
     
-    //в таблице показывается выбранная тренировка со всеми значениями
     public func configure(model: WorkoutModel) {
-        
         workoutModel = model
-        
         workoutNameLabel.text = model.workoutName
         
         if model.workoutTimer == 0 {
@@ -142,14 +139,11 @@ class WorkoutTableViewCell: UITableViewCell {
             startButton.backgroundColor = .specialYellow
             startButton.isEnabled = true
         }
-        
-       
         workoutImageView.image = UIImage(named: model.workoutImage)
     }
 }
 
 extension WorkoutTableViewCell {
-    
     private func setConstraints() {
         NSLayoutConstraint.activate([
             backgroundCell.topAnchor.constraint(equalTo: topAnchor, constant: 5),
@@ -166,11 +160,11 @@ extension WorkoutTableViewCell {
             workoutImageView.leadingAnchor.constraint(equalTo: workoutBackgroundView.leadingAnchor, constant: 10),
             workoutImageView.trailingAnchor.constraint(equalTo: workoutBackgroundView.trailingAnchor, constant: -10),
             workoutImageView.bottomAnchor.constraint(equalTo: workoutBackgroundView.bottomAnchor, constant: -10),
-        
+            
             workoutNameLabel.topAnchor.constraint(equalTo: backgroundCell.topAnchor, constant: 5),
             workoutNameLabel.leadingAnchor.constraint(equalTo: workoutBackgroundView.trailingAnchor, constant: 10),
             workoutNameLabel.trailingAnchor.constraint(equalTo: backgroundCell.trailingAnchor, constant: -10),
-        
+            
             labelsStackView.topAnchor.constraint(equalTo: workoutNameLabel.bottomAnchor, constant: 0),
             labelsStackView.leadingAnchor.constraint(equalTo: workoutBackgroundView.trailingAnchor, constant: 10),
             labelsStackView.heightAnchor.constraint(equalToConstant: 20),

@@ -84,7 +84,6 @@ class StatisticTableViewCell: UITableViewCell {
 }
 
 extension StatisticTableViewCell {
-    
     private func setConstrains() {
         NSLayoutConstraint.activate([
             countLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
@@ -94,7 +93,7 @@ extension StatisticTableViewCell {
             workoutNameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 5),
             workoutNameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             workoutNameLabel.trailingAnchor.constraint(equalTo: countLabel.leadingAnchor, constant: -20),
-           
+            
             labelsStackView.topAnchor.constraint(equalTo: workoutNameLabel.bottomAnchor, constant: 5),
             labelsStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             

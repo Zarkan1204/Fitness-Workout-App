@@ -87,14 +87,15 @@ class TimerWorkoutParametersView: UIView {
         addSubview(setsStackView)
         addSubview(setsLineView)
         timerStackView = UIStackView(arrangedSubviews: [timerLabel, numberOfTimerLabel],
-                                    axis: .horizontal,
-                                    spacing: 10)
+                                     axis: .horizontal,
+                                     spacing: 10)
         timerStackView.distribution = .equalSpacing
         addSubview(timerStackView)
         addSubview(timerLineView)
         addSubview(editingButton)
         addSubview(nextButton)
     }
+    
     @objc private func editingButtonTapped() {
         cellNextSetTimerDelegate?.editingTapped()
     }
@@ -103,14 +104,12 @@ class TimerWorkoutParametersView: UIView {
         cellNextSetTimerDelegate?.nextSetTimerTapped()
     }
     
-    // обнавляем лейблы
     public func refreshLabels(model: WorkoutModel, numberOfSet: Int) {
         workoutNameLabel.text = model.workoutName
         numberOfSetsLabel.text = "\(numberOfSet)/\(model.workoutSets)"
         numberOfTimerLabel.text = "\(model.workoutTimer.getTimeFromSeconds())"
     }
     
-    //кнопки не работают когда идет таймер
     public func buttonIsEnable(_ value: Bool) {
         editingButton.isEnabled = value
         nextButton.isEnabled = value

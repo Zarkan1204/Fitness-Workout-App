@@ -24,7 +24,6 @@ class NameView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     private func setupVeiws() {
         translatesAutoresizingMaskIntoConstraints = false
         
@@ -32,13 +31,12 @@ class NameView: UIView {
         addSubview(nameTextField)
     }
     
-    //получаем текст из тестфилда для сборки в модель
     public func getNameTextFieldText () -> String {
         guard let text = nameTextField.text else { return  ""}
         return text
     }
     
-    public func deleteTextFieldText() { //при сохранении текстфилд обнуляется
+    public func deleteTextFieldText() {
         nameTextField.text = ""
     }
 }

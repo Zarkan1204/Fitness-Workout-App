@@ -7,8 +7,6 @@
 
 import UIKit
 
-
-// всплывающее окно при нажатии editing
 class CustomAlert {
     
     private let backgroundView: UIView = {
@@ -36,7 +34,6 @@ class CustomAlert {
     
     private var buttonAction: ((String, String) -> Void)?
     
-    //передаем значения с репс и сетс текстфилдов
     func presentCustomAlert(viewController: UIViewController,
                             repsOrTimer: String,
                             completion: @escaping(String, String) -> Void) {
@@ -60,8 +57,6 @@ class CustomAlert {
         
         scrollView.addSubview(alertView)
         
-        
-        // добавляем и размещаем картинку
         let sportsmanImageView = UIImageView(frame: CGRect(
             x: (alertView.frame.width - alertView.frame.height * 0.4) / 2,
             y: 30,
@@ -72,8 +67,6 @@ class CustomAlert {
         sportsmanImageView.contentMode = .scaleAspectFit
         alertView.addSubview(sportsmanImageView)
         
-        
-        //добавляем и размещаем основной лейбл
         let editingLabel = UILabel(text: "Editing", font: .robotoMedium22(), textColor: .specialBlack)
         editingLabel.frame = CGRect(x: 10,
                                     y: alertView.frame.height * 0.4 + 50,
@@ -84,7 +77,6 @@ class CustomAlert {
         editingLabel.translatesAutoresizingMaskIntoConstraints = true
         alertView.addSubview(editingLabel)
         
-        // добавляем и размещаем лейбл первого текстфилда
         let setslabel = UILabel(text: "Sets")
         setslabel.frame = CGRect(x: 30,
                                  y: editingLabel.frame.maxY + 10,
@@ -93,7 +85,6 @@ class CustomAlert {
         setslabel.translatesAutoresizingMaskIntoConstraints = true
         alertView.addSubview(setslabel)
         
-        // добавляем и размещаем первый текстфилд
         setsTextField.frame = CGRect(x: 20,
                                      y: setslabel.frame.maxY,
                                      width: alertView.frame.width - 40,
@@ -102,13 +93,11 @@ class CustomAlert {
         setsTextField.keyboardType = .numberPad
         alertView.addSubview(setsTextField)
         
-        
-        //так же деалем второй лейбл и текстфилд
         let repsOrtimerlabel = UILabel(text: repsOrTimer)
         repsOrtimerlabel.frame = CGRect(x: 30,
-                                 y: setsTextField.frame.maxY + 3,
-                                 width: alertView.frame.width - 60,
-                                 height: 20)
+                                        y: setsTextField.frame.maxY + 3,
+                                        width: alertView.frame.width - 60,
+                                        height: 20)
         repsOrtimerlabel.translatesAutoresizingMaskIntoConstraints = true
         alertView.addSubview(repsOrtimerlabel)
         
@@ -132,8 +121,6 @@ class CustomAlert {
         
         buttonAction = completion
         
-        
-        //анимация
         UIView.animate(withDuration: 0.3) {
             self.backgroundView.alpha = 0.8
         } completion: { done in
@@ -145,7 +132,6 @@ class CustomAlert {
         }
     }
     
-    //собираем значения с текстфилдов
     @objc private func okButtonTapped() {
         
         guard let setNumber = setsTextField.text,
@@ -177,7 +163,6 @@ class CustomAlert {
         }
     }
     
-    //чтобы клавиатура не закрывала кнопку ОК когда записываем в текстфилд
     private func registerForKeyboardNotification() {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(kbWillShow),

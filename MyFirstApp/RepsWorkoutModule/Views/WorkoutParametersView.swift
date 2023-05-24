@@ -95,6 +95,7 @@ class WorkoutParametersView: UIView {
         addSubview(editingButton)
         addSubview(nextButton)
     }
+    
     @objc private func editingButtonTapped() {
         cellNextSetDelegate?.editingTapped()
     }
@@ -103,13 +104,11 @@ class WorkoutParametersView: UIView {
         cellNextSetDelegate?.nextTapped()
     }
     
-    // обнавляем лейблы
     public func refreshLabels(model: WorkoutModel, numberOfSet: Int) {
         workoutNameLabel.text = model.workoutName
         numberOfSetsLabel.text = "\(numberOfSet)/\(model.workoutSets)"
         numberOfRepsLabel.text = "\(model.workoutReps)"
     }
-     
 }
 
 extension WorkoutParametersView {
@@ -147,7 +146,6 @@ extension WorkoutParametersView {
             nextButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             nextButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             nextButton.heightAnchor.constraint(equalToConstant: 45)
-            
         ])
     }
 }

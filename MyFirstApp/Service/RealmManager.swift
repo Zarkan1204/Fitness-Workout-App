@@ -7,7 +7,6 @@
 
 import RealmSwift
 
-//работаем через синглтон
 class RealmManager {
     
     static let shared = RealmManager()
@@ -15,26 +14,22 @@ class RealmManager {
     
     let realm = try! Realm()
     
-    
-    //метод выдает все записи из базы данных
     func getResultWorkoutModel() -> Results<WorkoutModel> {
         realm.objects(WorkoutModel.self)
     }
     
-    //метод сохраняет тренировку в БД
     func saveWorkoutModel(_ model: WorkoutModel) {
         try! realm.write {
             realm.add(model)
         }
     }
-    //метод удаляет тренировку из БД
+    
     func deleteWorkoutModel(_ model: WorkoutModel) {
         try! realm.write {
             realm.delete(model)
         }
     }
     
-    //обновляем значения сетс и репс в алерте всплывающем
     func updateSetsRepsWorkoutModule(model: WorkoutModel, sets: Int, reps: Int) {
         try! realm.write {
             model.workoutSets = sets
@@ -42,7 +37,6 @@ class RealmManager {
         }
     }
     
-    //обновляем значения сетс и таймер в алерте всплывающем
     func updateSetsTimerWorkoutModule(model: WorkoutModel, sets: Int, timer: Int) {
         try! realm.write {
             model.workoutSets = sets
@@ -50,29 +44,22 @@ class RealmManager {
         }
     }
     
-    // тренировку завершаем 
     func updateStatusWorkoutModule(model: WorkoutModel) {
         try! realm.write {
             model.workoutStatus = true
         }
     }
     
-    
-    //User
-    
-    //метод выдает все записи из базы данных
     func getResultUserModel() -> Results<UserModel> {
         realm.objects(UserModel.self)
     }
     
-    //метод сохраняет данные о юзер
     func saveUserModel(_ model: UserModel) {
         try! realm.write {
             realm.add(model)
         }
     }
     
-    //обновляем пользователя
     func updateUserModel(model: UserModel) {
         
         let users = realm.objects(UserModel.self)

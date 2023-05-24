@@ -7,7 +7,6 @@
 
 import UIKit
 
-// alert (всплывающее окно)
 extension UIViewController {
     func presentSimpleAlert(title: String, message: String?) {
         let alertController = UIAlertController(title: title,

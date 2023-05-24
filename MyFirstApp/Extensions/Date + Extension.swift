@@ -8,19 +8,19 @@
 import Foundation
 
 extension Date {
-    //стучимся до дня недели
+    
     func getWeekdayNumber() -> Int {
         let calendar = Calendar.current
         let weekday = calendar.component(.weekday, from: self)
         return weekday
     }
     
-    // формат даты
     func localDate() -> Date {
         let timeZoneOfset = Double(TimeZone.current.secondsFromGMT(for: self))
         let localDate = Calendar.current.date(byAdding: .second, value: Int(timeZoneOfset), to: self) ?? Date()
         return localDate
     }
+    
     func getWeekArray() -> [[String]] {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "en_GB")
@@ -39,27 +39,23 @@ extension Date {
         return weekArray
     }
     
-    // метод позволяет нам смещаться на день назад
     func offsetDay(day: Int) -> Date {
         let offsetDay = Calendar.current.date(byAdding: .day, value: -day, to: self) ?? Date()
         return offsetDay
     }
     
-    // метод позволяет нам смещаться на месяц назад
     func offsetMonth(month: Int) -> Date {
         let offsetDate = Calendar.current.date(byAdding: .month, value: -month, to: self) ?? Date()
         return offsetDate
     }
     
-    
-    // получаем дату и время 00:00 (ищем запись между начальной и конечно датой)
     func startEndDate() -> (start: Date, end: Date) {
         
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd"
         
         let calendar  = Calendar.current
-
+        
         let stringDate = formatter.string(from: self)
         let totalData = formatter.date(from: stringDate) ?? Date()
         

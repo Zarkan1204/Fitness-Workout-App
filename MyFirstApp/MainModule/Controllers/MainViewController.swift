@@ -54,7 +54,6 @@ class MainViewController: UIViewController {
         return imageView
     }()
     
-    
     private let calendarView = CalendarView()
     private let weatherView = WeatherView()
     private let workoutTodayLabel = UILabel(text: "Workout today")
@@ -66,11 +65,10 @@ class MainViewController: UIViewController {
         userPhotoImageView.layer.cornerRadius = userPhotoImageView.frame.width / 2
     }
     
-    // отрабатывает при загрузке и каждый раз когда окно открывается
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        selectitem(date: Date()) //когда включаешь приложение то показывает сегодняшнее число и тренировке на этот день
+        selectitem(date: Date())
         setupUserParameters()
     }
     
@@ -89,7 +87,6 @@ class MainViewController: UIViewController {
     
     private func setupViews() {
         view.backgroundColor = .specialBackground
-        
         view.addSubview(calendarView)
         calendarView.setDelegate(self)
         view.addSubview(userPhotoImageView)
@@ -102,33 +99,27 @@ class MainViewController: UIViewController {
         view.addSubview(noWorkoutImageView)
         
     }
- 
+    
     @objc private func addWorkoutButtonTapped() {
         let newWorkoutViewController = NewWorkoutViewController()
         newWorkoutViewController.modalPresentationStyle = .fullScreen
         present(newWorkoutViewController, animated: true)
     }
- 
     
-    // метод который сортирует записи и сохраняет
     private func getWorkouts(date: Date) {
         let weekDay = date.getWeekdayNumber()
         let dateStart = date.startEndDate().start
         let dateEnd = date.startEndDate().end
         
-        //предикаты это условие "если" по которому будет производиться сортировка
-        //если свитч включен мы проверяем номер дня, а если выключен смотрим чтобы дата совпадала
         let predicaterepeat = NSPredicate(format: "workoutNumberOfDay = \(weekDay) AND workoutRepeat = true")
         let predicateUnRepeat = NSPredicate(format: "workoutRepeat = false AND workoutDate BETWEEN %@", [dateStart, dateEnd])
         let compound = NSCompoundPredicate(type: .or, subpredicates: [predicaterepeat, predicateUnRepeat])
         
-        //получаем все записи из БД и фильтруем их по условиям выше (если репит тру или фолс)
         let resultArray = RealmManager.shared.getResultWorkoutModel()
         let filtredArray = resultArray.filter(compound).sorted(byKeyPath: "workoutName")
         workoutArray = filtredArray.map { $0 }
     }
     
-    //показывает или тренировку или пустой экран с картинкой
     private func checkWorkoutToday() {
         if workoutArray.count == 0 {
             noWorkoutImageView.isHidden = false
@@ -139,13 +130,12 @@ class MainViewController: UIViewController {
         }
     }
     
-    //загружаем пользовательские параметры
     private func setupUserParameters() {
         let userArray = RealmManager.shared.getResultUserModel()
         
         if userArray.count != 0 {
             userNameLabel.text = userArray[0].userFirstName + " " + userArray[0].userSecondName
-    
+            
             guard let data = userArray[0].userImage,
                   let image = UIImage(data: data) else {
                 return
@@ -183,7 +173,6 @@ class MainViewController: UIViewController {
     }
 }
 
-
 extension MainViewController: CalendarViewProtocol {
     func selectitem(date: Date) {
         getWorkouts(date: date)
@@ -193,7 +182,6 @@ extension MainViewController: CalendarViewProtocol {
     }
 }
 
-//удаляет модель тренировки по индексу и таблица обновляется
 extension MainViewController: MainTableViewProtocol {
     func deleteWorkout(model: WorkoutModel, index: Int) {
         RealmManager.shared.deleteWorkoutModel(model)
@@ -203,7 +191,6 @@ extension MainViewController: MainTableViewProtocol {
     }
 }
 
-// выбираем экран тренировки или с подходами или с таймером
 extension MainViewController: WorkoutCellProtocol {
     func startButtonTapped(model: WorkoutModel) {
         if model.workoutTimer == 0 {
@@ -219,7 +206,6 @@ extension MainViewController: WorkoutCellProtocol {
         }
     }
 }
-
 
 extension MainViewController {
     private func setConstrains() {

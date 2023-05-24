@@ -41,8 +41,6 @@ class StatisticTableView: UITableView {
     }
 }
 
-//MARK: - UITableViewDataSource
-
 extension  StatisticTableView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         differenceArray.count
@@ -58,8 +56,6 @@ extension  StatisticTableView: UITableViewDataSource {
         return cell
     }
 }
-
-//MARK: - UITableViewDelegate
 
 extension StatisticTableView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

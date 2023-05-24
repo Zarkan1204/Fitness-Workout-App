@@ -9,7 +9,7 @@ import UIKit
 
 class NewWorkoutViewController: UIViewController {
     
-    private lazy var scrollView: UIScrollView = {   // скролл экрана
+    private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.backgroundColor = .none
         scrollView.bounces = false
@@ -20,7 +20,7 @@ class NewWorkoutViewController: UIViewController {
     }()
     
     private lazy var contentView: UIView = {
-       let view = UIView()
+        let view = UIView()
         view.backgroundColor = .clear
         view.frame.size = CGSize(width: view.frame.width, height: view.frame.height)
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -43,14 +43,13 @@ class NewWorkoutViewController: UIViewController {
     
     private var stackView = UIStackView()
     
-    //создали модель
     private var workoutModel  = WorkoutModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         setConstraints()
-        addGesture()        // метод убирающий клавиатуру тапом
+        addGesture()
     }
     
     private func setupView() {
@@ -82,16 +81,8 @@ class NewWorkoutViewController: UIViewController {
     @objc private func saveButtonTapped() {
         setModel()
         saveModel()
-        
-        
-//это чтобы после сохраниния тренировки, картинка не подсвечивалась 
-//        for indexPath in selectWorkoutCollectionView.indexPathsForSelectedItems ?? [] {
-//            selectWorkoutCollectionView.deselectItem(at: indexPath, animated: true)
-//                }
     }
     
-    
-    // модель собираем
     private func setModel() {
         workoutModel.workoutName = nameView.getNameTextFieldText()
         
@@ -105,15 +96,12 @@ class NewWorkoutViewController: UIViewController {
         
         workoutModel.workoutImage = imageName
     }
-   
     
-    //модель сохраняем (три параметра должны быть обязательны при сохранении)
     private func saveModel() {
         let text = nameView.getNameTextFieldText()
-        let count = text.filter{$0.isNumber || $0.isLetter}.count //в текстфилде должна быть либо буква либо цифра хотябы одна
-        
+        let count = text.filter{$0.isNumber || $0.isLetter}.count
         if count != 0 &&
-            workoutModel.workoutSets != 0 &&       //два слайдера не должны быть = 0
+            workoutModel.workoutSets != 0 &&
             (workoutModel.workoutReps != 0 || workoutModel.workoutTimer != 0) {
             RealmManager.shared.saveWorkoutModel(workoutModel)
             createNotification()
@@ -125,22 +113,17 @@ class NewWorkoutViewController: UIViewController {
         }
     }
     
-    // при нажатии на сейф все обнуляем
     private func resetValues() {
         nameView.deleteTextFieldText()
         dateAndRepeatView.resetDataAndRepeat()
         repsOrTimerView.resetSliderViewValue()
     }
     
-    
     private func addGesture() {
-        
-        // убираем клавиатуру тапом в любом месте
         let tapScreen = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         tapScreen.cancelsTouchesInView = false
         view.addGestureRecognizer(tapScreen)
         
-        // когда перетаскиваем слайдер клавиатура(текстфилд) убирается 
         let swipeScreen = UISwipeGestureRecognizer(target: self, action: #selector(hideKeyboard))
         swipeScreen.cancelsTouchesInView = false
         view.addGestureRecognizer(swipeScreen)
@@ -157,13 +140,11 @@ class NewWorkoutViewController: UIViewController {
     }
 }
 
-
 extension NewWorkoutViewController: ImageWorkoutProtocol {
     func setImage(imageName: String) {
         self.imageName = imageName
     }
 }
-
 
 extension NewWorkoutViewController {
     private func setConstraints() {
@@ -190,18 +171,17 @@ extension NewWorkoutViewController {
             imageWorkoutView.heightAnchor.constraint(equalToConstant: 100),
             dateAndRepeatView.heightAnchor.constraint(equalToConstant: 115),
             repsOrTimerView.heightAnchor.constraint(equalToConstant: 340),
-
+            
             stackView.topAnchor.constraint(equalTo: newWorkoutLabel.bottomAnchor, constant: 10),
             stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             stackView.bottomAnchor.constraint(equalTo: saveButton.topAnchor, constant: -20),
-
+            
             saveButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 20),
             saveButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             saveButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             saveButton.heightAnchor.constraint(equalToConstant: 55),
             saveButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -15)
-            
         ])
     }
 }

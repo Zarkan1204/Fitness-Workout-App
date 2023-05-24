@@ -10,8 +10,8 @@ import UIKit
 class ProfileWorkoutViewController: UIViewController {
     
     private let profileLabel = UILabel(text: "PROFILE",
-                                          font: .robotoMedium24(),
-                                          textColor: .specialGray)
+                                       font: .robotoMedium24(),
+                                       textColor: .specialGray)
     
     private let userPhotoImageView: UIImageView = {
         let imageView = UIImageView()
@@ -35,12 +35,12 @@ class ProfileWorkoutViewController: UIViewController {
     private let userNameLabel = UILabel(text: "ARTEM GERASIMOV", font: .robotoMedium24(), textColor: .white)
     
     private let heightLabel = UILabel(text: "Height: 100",
-                                          font: .robotoMedium16(),
-                                          textColor: .specialBlack)
-
+                                      font: .robotoMedium16(),
+                                      textColor: .specialBlack)
+    
     private let weightLabel = UILabel(text: "Weight: 50",
-                                          font: .robotoMedium16(),
-                                          textColor: .specialBlack)
+                                      font: .robotoMedium16(),
+                                      textColor: .specialBlack)
     
     private lazy var editingButton: UIButton = {
         let button = UIButton(type: .system)
@@ -48,25 +48,25 @@ class ProfileWorkoutViewController: UIViewController {
         button.titleLabel?.font = .robotoMedium16()
         button.setImage(UIImage(named: "profileEditing")?.withRenderingMode(.alwaysOriginal), for: .normal)
         button.tintColor = .specialGreen
-        button.semanticContentAttribute = .forceRightToLeft // меняет картинку с текстом местами
+        button.semanticContentAttribute = .forceRightToLeft
         button.addTarget(self, action: #selector(editingButtonTap), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
     private let profileWorkoutCollectionView = ProfileWorkoutCollectionView()
-
+    
     private let targetLabel = UILabel(text: "TARGET: 20 Workouts",
                                       font: .robotoMedium16(),
                                       textColor: .specialBlack)
     
     private let minCountLabel = UILabel(text: "0",
-                                          font: .robotoBold24(),
-                                          textColor: .specialBlack)
+                                        font: .robotoBold24(),
+                                        textColor: .specialBlack)
     
     private let maxCountLabel = UILabel(text: "20",
-                                          font: .robotoBold24(),
-                                          textColor: .specialBlack)
+                                        font: .robotoBold24(),
+                                        textColor: .specialBlack)
     
     private var targetStackView = UIStackView()
     
@@ -94,7 +94,7 @@ class ProfileWorkoutViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         setupUserParameters()
     }
-   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -120,8 +120,8 @@ class ProfileWorkoutViewController: UIViewController {
         view.addSubview(profileWorkoutCollectionView)
         view.addSubview(targetLabel)
         targetStackView = UIStackView(arrangedSubviews: [minCountLabel, maxCountLabel],
-                                    axis: .horizontal,
-                                    spacing: 10)
+                                      axis: .horizontal,
+                                      spacing: 10)
         view.addSubview(targetStackView)
         view.addSubview(targetView)
         view.addSubview(progressView)
@@ -133,7 +133,6 @@ class ProfileWorkoutViewController: UIViewController {
         present(editingProfileWorkoutViewController, animated: true)
     }
     
-    //загружаем пользовательские параметры
     private func setupUserParameters() {
         let userArray = RealmManager.shared.getResultUserModel()
         
@@ -163,7 +162,7 @@ extension ProfileWorkoutViewController {
             userPhotoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             userPhotoImageView.heightAnchor.constraint(equalToConstant: 90),
             userPhotoImageView.widthAnchor.constraint(equalToConstant: 90),
-   
+            
             userPhotoView.topAnchor.constraint(equalTo: userPhotoImageView.topAnchor, constant: 45),
             userPhotoView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             userPhotoView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
@@ -201,12 +200,12 @@ extension ProfileWorkoutViewController {
             targetStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             targetStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             targetStackView.heightAnchor.constraint(equalToConstant: 25),
-                        
+            
             targetView.topAnchor.constraint(equalTo: targetStackView.bottomAnchor, constant: 3),
             targetView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             targetView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             targetView.heightAnchor.constraint(equalToConstant: 28),
-
+            
             progressView.topAnchor.constraint(equalTo: targetView.bottomAnchor, constant: 20),
             progressView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             progressView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),

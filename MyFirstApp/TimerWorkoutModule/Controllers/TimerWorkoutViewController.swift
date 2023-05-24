@@ -8,10 +8,10 @@
 import UIKit
 
 class TimerWorkoutViewController: UIViewController {
-   
+    
     private let startWorkoutLabel = UILabel(text: "START WORKOUT",
-                                          font: .robotoMedium24(),
-                                          textColor: .specialGray)
+                                            font: .robotoMedium24(),
+                                            textColor: .specialGray)
     
     private lazy var closeButton = CloseButton(type: .system)
     
@@ -60,7 +60,7 @@ class TimerWorkoutViewController: UIViewController {
     
     private func setupViews() {
         view.backgroundColor = .specialBackground
-       
+        
         view.addSubview(startWorkoutLabel)
         view.addSubview(closeButton)
         closeButton.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
@@ -95,14 +95,12 @@ class TimerWorkoutViewController: UIViewController {
         workoutModel = model
     }
     
-    // нажатие на лейбл таймер
     private func addTapped() {
         let tapLabel = UITapGestureRecognizer(target: self, action: #selector(startTimer))
         timerLabel.isUserInteractionEnabled = true
         timerLabel.addGestureRecognizer(tapLabel)
     }
     
-    // нажимаем на таймер и кнопки не доступны
     @objc private func startTimer() {
         timerWorkoutParametersView.buttonIsEnable(false)
         
@@ -111,20 +109,19 @@ class TimerWorkoutViewController: UIViewController {
         } else {
             basicAnimation()
             timer = Timer.scheduledTimer(timeInterval: 1,
-                          target: self,
-                          selector: #selector(timerAction),
-                          userInfo: nil,
-                          repeats: true)
+                                         target: self,
+                                         selector: #selector(timerAction),
+                                         userInfo: nil,
+                                         repeats: true)
         }
     }
     
     @objc private func timerAction() {
         durationTimer -= 1
-        
         if durationTimer == 0 {
             timer.invalidate()
             durationTimer = workoutModel.workoutTimer
-
+            
             numberOfSet += 1
             timerWorkoutParametersView.refreshLabels(model: workoutModel, numberOfSet: numberOfSet)
             timerWorkoutParametersView.buttonIsEnable(true)
@@ -134,8 +131,6 @@ class TimerWorkoutViewController: UIViewController {
         timerLabel.text = "\(min):\(sec.setZeroForSecond())"
     }
     
-   
-    // сколько выставляем времени столько и на таймере
     private func setWorkoutParameters() {
         let (min, sec) = workoutModel.workoutTimer.convertSeconds()
         timerLabel.text = "\(min):\(sec.setZeroForSecond())"
@@ -168,14 +163,13 @@ extension TimerWorkoutViewController: NextSetTimerProtocol {
                 self.timerWorkoutParametersView.refreshLabels(model: self.workoutModel, numberOfSet: self.numberOfSet)
             }
         }
-    }  
+    }
 }
 
-// зеленый индикатор времени
 extension TimerWorkoutViewController {
     
     private func animationCircular() {
-       
+        
         let center = CGPoint(x: ellipseImageView.frame.width / 2,
                              y: ellipseImageView.frame.height / 2)
         
@@ -192,8 +186,7 @@ extension TimerWorkoutViewController {
         shepeLayer.lineCap = .round
         ellipseImageView.layer.addSublayer(shepeLayer)
     }
-
-    //настройка анимации индикатора таймера
+    
     private func basicAnimation() {
         let basicAnimation = CABasicAnimation(keyPath: "strokeEnd")
         basicAnimation.toValue = 0
@@ -203,11 +196,9 @@ extension TimerWorkoutViewController {
     }
 }
 
-
 extension TimerWorkoutViewController {
     private func setConstrains() {
         NSLayoutConstraint.activate([
-            
             startWorkoutLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
             startWorkoutLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             

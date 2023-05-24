@@ -9,10 +9,10 @@ import UIKit
 import PhotosUI
 
 class EditingProfileWorkoutViewController: UIViewController {
-     
+    
     private let editingProfileLabel = UILabel(text: "EDITING PROFILE",
-                                          font: .robotoMedium24(),
-                                          textColor: .specialGray)
+                                              font: .robotoMedium24(),
+                                              textColor: .specialGray)
     
     private lazy var closeButton = CloseButton(type: .system)
     
@@ -29,7 +29,7 @@ class EditingProfileWorkoutViewController: UIViewController {
     }()
     
     private let addPhotoView: UIView = {
-       let view = UIView()
+        let view = UIView()
         view.backgroundColor = .specialGreen
         view.layer.cornerRadius = 10
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -54,7 +54,7 @@ class EditingProfileWorkoutViewController: UIViewController {
     private lazy var saveButton = GreenButton(text: "SAVE")
     
     private var userModel = UserModel()
-
+    
     override func viewDidLayoutSubviews() {
         addPhotoImageView.layer.cornerRadius = addPhotoImageView.frame.height / 2
     }
@@ -91,7 +91,7 @@ class EditingProfileWorkoutViewController: UIViewController {
     }
     
     @objc private func saveButtonTapped() {
-       setUserModel()
+        setUserModel()
         
         let userArray = RealmManager.shared.getResultUserModel()
         
@@ -106,7 +106,7 @@ class EditingProfileWorkoutViewController: UIViewController {
     @objc private func closeButtonTapped() {
         dismiss(animated: true)
     }
-    // накинули жест на юзерфото
+    
     private func addTap() {
         let tapImageView = UITapGestureRecognizer(target: self, action: #selector(setUserPhoto))
         addPhotoImageView.isUserInteractionEnabled = true
@@ -148,20 +148,14 @@ class EditingProfileWorkoutViewController: UIViewController {
         if addPhotoImageView.image == UIImage(named: "addPhoto") {
             userModel.userImage = nil
         } else {
-//            guard let imageData = addPhotoImageView.image?.pngData() else {
-//                return
-//            }
-//            userModel.userImage = imageData
             guard let image = addPhotoImageView.image else { return }
             let jpegData = image.jpegData(compressionQuality: 1.0)
             userModel.userImage = jpegData
         }
     }
-   //если закрыли экран editing profile данные все остаются
+    
     private func loadUserInfo() {
-        
         let userArray = RealmManager.shared.getResultUserModel()
-        
         if userArray.count != 0 {
             firstNameTextField.text = userArray[0].userFirstName
             secondNameTextField.text = userArray[0].userSecondName
@@ -179,7 +173,6 @@ class EditingProfileWorkoutViewController: UIViewController {
     }
 }
 
-// пытаемся открыть стандартную галерею для выбора фото
 extension EditingProfileWorkoutViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     private func chooseImagePicker(sourse: UIImagePickerController.SourceType) {
@@ -191,6 +184,7 @@ extension EditingProfileWorkoutViewController: UIImagePickerControllerDelegate, 
             present(imagePicker, animated: true)
         }
     }
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image = info[.editedImage] as? UIImage
         addPhotoImageView.image = image
@@ -216,7 +210,7 @@ extension EditingProfileWorkoutViewController: PHPickerViewControllerDelegate {
             }
         }
     }
-   
+    
     private func presentPHPicker() {
         var phPickerConfig = PHPickerConfiguration(photoLibrary: .shared())
         phPickerConfig.selectionLimit = 1
@@ -238,17 +232,17 @@ extension EditingProfileWorkoutViewController {
             closeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             closeButton.heightAnchor.constraint(equalToConstant: 33),
             closeButton.widthAnchor.constraint(equalToConstant: 33),
-        
+            
             addPhotoImageView.topAnchor.constraint(equalTo: editingProfileLabel.bottomAnchor, constant: 20),
             addPhotoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             addPhotoImageView.heightAnchor.constraint(equalToConstant: 100),
             addPhotoImageView.widthAnchor.constraint(equalToConstant: 100),
-  
+            
             addPhotoView.topAnchor.constraint(equalTo: addPhotoImageView.topAnchor, constant: 50),
             addPhotoView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             addPhotoView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             addPhotoView.heightAnchor.constraint(equalToConstant: 70),
-        
+            
             firstNameLabel.topAnchor.constraint(equalTo: addPhotoView.bottomAnchor, constant: 40),
             firstNameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
             firstNameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),

@@ -18,5 +18,4 @@ class WorkoutModel: Object {
     @Persisted var workoutTimer: Int = 0
     @Persisted var workoutImage: String 
     @Persisted var workoutStatus: Bool = false
-    
 }

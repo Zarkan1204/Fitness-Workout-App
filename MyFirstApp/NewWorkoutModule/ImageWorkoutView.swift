@@ -12,7 +12,6 @@ class ImageWorkoutView: UIView {
     private let imageLabel = UILabel(text: "Select Image")
     private let selectWorkoutCollectionView = SelectWorkoutCollectionView()
     
-    
     override init(frame: CGRect) {
         super.init(frame: .zero)
         
@@ -34,6 +33,7 @@ class ImageWorkoutView: UIView {
         selectWorkoutCollectionView.selectImageDelegate = delegate
     }
 }
+
 extension ImageWorkoutView {
     private func setConstraints() {
         NSLayoutConstraint.activate([
@@ -46,8 +46,6 @@ extension ImageWorkoutView {
             selectWorkoutCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
             selectWorkoutCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
             selectWorkoutCollectionView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0)
-        
-        
         ])
     }
 }

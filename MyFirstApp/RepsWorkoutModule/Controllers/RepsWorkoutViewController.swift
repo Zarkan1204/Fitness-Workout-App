@@ -8,10 +8,10 @@
 import UIKit
 
 class RepsWorkoutViewController: UIViewController {
-   
+    
     private let startWorkoutLabel = UILabel(text: "START WORKOUT",
-                                          font: .robotoMedium24(),
-                                          textColor: .specialGray)
+                                            font: .robotoMedium24(),
+                                            textColor: .specialGray)
     
     private lazy var closeButton = CloseButton(type: .system)
     private let sportmanImageView: UIImageView = {
@@ -21,6 +21,7 @@ class RepsWorkoutViewController: UIViewController {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
+    
     private let ditailsLabel = UILabel(text: "Ditails")
     private let workoutParametersView = WorkoutParametersView()
     private lazy var finishButton = GreenButton(text: "FINISH")
@@ -39,7 +40,7 @@ class RepsWorkoutViewController: UIViewController {
     
     private func setupViews() {
         view.backgroundColor = .specialBackground
-       
+        
         view.addSubview(startWorkoutLabel)
         view.addSubview(closeButton)
         closeButton.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
@@ -68,7 +69,6 @@ class RepsWorkoutViewController: UIViewController {
         }
     }
     
-    // устанавливаем модель
     public func setWorkoutModel(_ model: WorkoutModel) {
         workoutModel = model
     }

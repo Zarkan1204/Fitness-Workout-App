@@ -59,7 +59,7 @@ class StatisticViewController: UIViewController {
         view.addSubview(exercisesLabel)
         view.addSubview(tableView)
         view.addSubview(segmentedControl)
-
+        
     }
     
     @objc private func segmentedChange() {
@@ -77,7 +77,6 @@ class StatisticViewController: UIViewController {
         tableView.reloadData()
     }
     
-    //получаем резульатат всех тренировок
     private func getWorkoutsName() -> [String] {
         var nameArray = [String]()
         
@@ -102,7 +101,7 @@ class StatisticViewController: UIViewController {
             workoutArray = filtredArray.map { $0 }
             
             guard let last = workoutArray.last?.workoutReps,
-                    let first = workoutArray.first?.workoutReps else {
+                  let first = workoutArray.first?.workoutReps else {
                 return
             }
             let differenceWorkout = DifferenceWorkout(name: name, lastReps: last, firstReps: first)

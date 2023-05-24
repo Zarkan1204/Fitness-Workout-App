@@ -8,12 +8,12 @@
 import UIKit
 
 class BrownTextField: UITextField {
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         configure()
-        delegate = self // делегат который убирает клавиатуру кнопкокй "Done"
+        delegate = self
     }
     
     required init?(coder: NSCoder) {
@@ -27,9 +27,9 @@ class BrownTextField: UITextField {
         textColor = .specialGray
         font = .robotoBold20()
         leftView = UIView(frame: CGRect(x: 0,
-                                                  y: 0,
-                                                  width: 15,
-                                                  height: 0))
+                                        y: 0,
+                                        width: 15,
+                                        height: 0))
         leftViewMode = .always
         clearButtonMode = .always
         returnKeyType = .done
@@ -37,11 +37,8 @@ class BrownTextField: UITextField {
     }
 }
 
-// протокол убирания клавиатуры по нажатию на "Done"
 extension BrownTextField: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        
     }
-    
 }

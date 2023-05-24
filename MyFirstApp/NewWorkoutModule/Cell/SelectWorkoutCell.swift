@@ -12,7 +12,7 @@ class SelectWorkoutCell: UICollectionViewCell {
     static let idSelectWorkoutCell = "idSelectWorkoutCell"
     
     private let imageBackground: UIView = {
-       let imageBackground = UIView()
+        let imageBackground = UIView()
         imageBackground.backgroundColor = .specialBackground
         imageBackground.layer.cornerRadius = 15
         imageBackground.translatesAutoresizingMaskIntoConstraints = false

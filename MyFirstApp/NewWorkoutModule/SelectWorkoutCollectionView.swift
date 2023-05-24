@@ -34,13 +34,12 @@ class SelectWorkoutCollectionView: UICollectionView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     private func configure() {
         self.backgroundColor = .specialBrown
         self.translatesAutoresizingMaskIntoConstraints = false
         self.layer.cornerRadius = 10
         self.showsHorizontalScrollIndicator = false
-    
+        
     }
     
     private func setupLayout() {
@@ -59,7 +58,7 @@ extension SelectWorkoutCollectionView: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-       guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SelectWorkoutCell.idSelectWorkoutCell, for: indexPath) as? SelectWorkoutCell else
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SelectWorkoutCell.idSelectWorkoutCell, for: indexPath) as? SelectWorkoutCell else
         { return UICollectionViewCell()}
         let nameImage = imageNames[indexPath.row]
         cell.configure(nameImage: nameImage)
